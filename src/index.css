@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+
+.gender {
+    position: absolute;
+    top: 78%;
+    left: 50%;
+    transform: translate(-50%, 5%);
+    z-index: 2;
+    font-size: 6vw;
+    color: #bbada4;
+    font-family: "ClashDisplay-SemiBold";
+    text-shadow: 2px 2px 2px #000;
+    mix-blend-mode: difference;
+}

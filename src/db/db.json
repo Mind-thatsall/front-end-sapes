@@ -1,0 +1,139 @@
+{
+  "cart": [],
+  "products": [
+    {
+      "id": "Ae28e282134",
+      "name": "Leather Jacket",
+      "description": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid",
+      "color": "Black",
+      "price": 100,
+      "gender": "male",
+      "rate": 2,
+      "categories": "Vest",
+      "images": [
+        "./assets/images/vest.jpg",
+        "./assets/images/vest2.jpg",
+        "./assets/images/vest3.jpg"
+      ],
+      "availableSizes": [
+        {
+          "size": "S",
+          "quantity": 10
+        },
+        {
+          "size": "M",
+          "quantity": 10
+        },
+        {
+          "size": "XL",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "Ae28e282138",
+      "name": "T-shirt avec motif de fou",
+      "description": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid",
+      "color": "Red",
+      "price": 80,
+      "rate": 4,
+      "gender": "female",
+      "categories": "T-shirt",
+      "images": [
+        "./assets/images/tshirt.jpg",
+        "./assets/images/tshirt2.jpg",
+        "./assets/images/tshirt3.jpg"
+      ],
+      "availableSizes": [
+        {
+          "size": "S",
+          "quantity": 10
+        },
+        {
+          "size": "M",
+          "quantity": 10
+        },
+        {
+          "size": "XXL",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "Ae28e282131",
+      "name": "Jean troué",
+      "description": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid",
+      "color": "Blue",
+      "price": 10,
+      "rate": 3,
+      "gender": "mixed",
+      "categories": "Jeans",
+      "images": [
+        "./assets/images/jean.jpg",
+        "./assets/images/jean2.jpg",
+        "./assets/images/jean3.jpg"
+      ],
+      "availableSizes": [
+        {
+          "size": "S",
+          "quantity": 10
+        },
+        {
+          "size": "XS",
+          "quantity": 10
+        },
+        {
+          "size": "XL",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "Ae28e282132",
+      "name": "Vest",
+      "description": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidid",
+      "color": "Black",
+      "price": 100,
+      "images": [
+        "./assets/images/vest.jpg",
+        "./assets/images/vest2.jpg",
+        "./assets/images/vest3.jpg"
+      ],
+      "availableSizes": [
+        {
+          "size": "S",
+          "quantity": 10
+        },
+        {
+          "size": "M",
+          "quantity": 10
+        },
+        {
+          "size": "XL",
+          "quantity": 10
+        }
+      ]
+    }
+  ],
+  "user": [
+    {
+      "id": "Ae28e282132",
+      "address": "",
+      "zipcode": "",
+      "city": "",
+      "phone": "",
+      "email": "",
+      "name": "",
+      "lastname": "",
+      "orders": [
+        {
+          "id": 1,
+          "products": [
+            "Ae28e282132",
+            "Ae28e282131"
+          ]
+        }
+      ]
+    }
+  ]
+}
