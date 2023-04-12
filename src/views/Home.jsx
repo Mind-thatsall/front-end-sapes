@@ -1,7 +1,7 @@
 import React from "react";
 import men from "@/assets/images/men.jpg";
 import women from "@/assets/images/women.png";
-import SideBars from "@/components/SideBars";
+import SideBars from "@/components/Sidebars";
 import { Link } from "react-router-dom";
 
 const Home = () => {
