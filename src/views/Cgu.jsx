@@ -1,7 +1,35 @@
-import React from "react";
+import React ,{ useEffect } from "react";
 
 const CGU = () => {
-  
+  // useEffect hook to handle clicks on details elements
+  useEffect(() => {
+
+    // function to handle clicks on details elements
+    const handleDetailsClick = (event) => {
+
+      // find all details elements in the document
+      const detailsElements = document.getElementsByTagName("details");
+
+      for (let i = 0; i < detailsElements.length; i++) {
+
+        // get the target of the click event
+        const target = event.target;
+
+         // check if the click is outside the current details element
+        const isOutside = !detailsElements[i].contains(target);
+
+         // if the click is outside, remove the "open" attribute from the details element
+        if (isOutside) {
+          detailsElements[i].removeAttribute("open");
+        }
+      }
+    };
+
+    document.addEventListener("click", handleDetailsClick);
+    return () => {
+      document.removeEventListener("click", handleDetailsClick);
+    };
+  }, []);
   return ( 
     <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-12 lg:grid-rows-12 min-h-screen">
 
@@ -63,8 +91,6 @@ const CGU = () => {
           </div>
         </div>
       </section>
-  
-  
   </div>
   );
 };
