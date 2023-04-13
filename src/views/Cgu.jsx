@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const CGU = () => {
-  return (
-    <div>CGU</div>
-  )
-}
+  return <div>CGU</div>;
+};
 
-export default CGU
+export default CGU;
