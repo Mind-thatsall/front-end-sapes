@@ -1,6 +1,7 @@
 import React ,{ useEffect } from "react";
 
 const CGU = () => {
+
   // useEffect hook to handle clicks on details elements
   useEffect(() => {
 
@@ -16,25 +17,30 @@ const CGU = () => {
         const target = event.target;
 
          // check if the click is outside the current details element
-        const isOutside = !detailsElements[i].contains(target);
+        const isNotDetailsElements = !detailsElements[i].contains(target);
 
          // if the click is outside, remove the "open" attribute from the details element
-        if (isOutside) {
+        if (isNotDetailsElements) 
+        {
           detailsElements[i].removeAttribute("open");
         }
       }
     };
 
+    // add click event listener to document
     document.addEventListener("click", handleDetailsClick);
+
+    // remove event listener on cleanup
     return () => {
       document.removeEventListener("click", handleDetailsClick);
     };
   }, []);
+
   return ( 
     <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-12 lg:grid-rows-12 min-h-screen">
 
       <section 
-      style={{ position: "fixed", top: "70px", left: "30px"}} className="col-start-2 col-end-12 row-start-2 row-end-12 md:col-start-1 lg:col-start-2 lg:col-end-10 lg:row-start-3 lg:row-end-11 max-h-screen overflow-y-auto">
+      style={{ position: "fixed", top: "150px", left: "50px"}} className="col-start-2 col-end-12 row-start-2 row-end-12 md:col-start-1 lg:col-start-1 lg:col-end-10 lg:row-start-3 lg:row-end-11 max-h-screen overflow-y-auto">
         <div className="container flex flex-col p-4 ">
 		
           <h2 
@@ -46,7 +52,7 @@ const CGU = () => {
 
           <div style={{ fontFamily: "ClashDisplay-Medium" }} className="flex flex-col divide-y divide-gray-700">
             <details>
-              <summary className="py-2 outline-none cursor-pointer focus:underline text-md  ">
+              <summary className="py-2 outline-none cursor-pointer focus:underline text-2xl  ">
                 GENERAL
               </summary>
               <div className="pb-4 text-base">
@@ -57,7 +63,7 @@ const CGU = () => {
             </details>
 
             <details>
-              <summary className="py-2 outline-none cursor-pointer focus:underline text-md ">
+              <summary className="py-2 outline-none cursor-pointer focus:underline text-2xl ">
                 USE OF THE SITE
               </summary>
               <div className="pb-4 text-base">
@@ -68,7 +74,7 @@ const CGU = () => {
             </details>
 
             <details>
-              <summary className="py-2 outline-none cursor-pointer focus:underline text-md  ">
+              <summary className="py-2 outline-none cursor-pointer focus:underline text-2xl  ">
                 INTELLECTUAL PROPERTY RIGHTS
               </summary>
               <div className="pb-4 text-base">
@@ -79,7 +85,7 @@ const CGU = () => {
             </details>
 
             <details>
-              <summary className="py-2 outline-none cursor-pointer focus:underline text-md ">
+              <summary className="py-2 outline-none cursor-pointer focus:underline text-2xl ">
                 PRODUCT INFORMATION
               </summary>
               <div className="pb-4 text-base">
