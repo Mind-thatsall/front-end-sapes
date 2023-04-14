@@ -22,10 +22,12 @@ export function openSearch(input, modal) {
     input,
     {
       opacity: 0,
+      pointerEvents: "none",
     },
     {
       opacity: 1,
       duration: 0.25,
+      pointerEvents: "auto",
     }
   );
 }
@@ -50,10 +52,12 @@ export function closeSearch(input, modal) {
     input,
     {
       opacity: 1,
+      pointerEvents: "auto",
     },
     {
       opacity: 0,
       duration: 0.25,
+      pointerEvents: "none",
     }
   );
 }
