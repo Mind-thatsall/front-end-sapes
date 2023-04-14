@@ -25,9 +25,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/:id" element={<Shop />} />
-        <Route path="women/categories" element={<Categories />} />
+        <Route
+          path="women/categories"
+          element={<Categories gender={"women"} />}
+        />
         <Route path="women/categories/:id" element={<Shop />} />
-        <Route path="men/categories" element={<Categories />} />
+        <Route path="men/categories" element={<Categories gender={"men"} />} />
         <Route path="men/categories/:id" element={<Shop />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/article/:id" element={<Article />} />

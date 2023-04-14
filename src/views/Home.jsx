@@ -31,7 +31,7 @@ const Home = () => {
         to={"/men/categories"}
         className="relative  col-start-2 col-end-4 row-start-4 row-end-5 lg:col-start-4 lg:col-end-6 lg:row-start-4 lg:row-end-7 h-fit hover-gender"
       >
-        <p className="gender">MEN</p>
+        <p className="gender opacity-1 lg:opacity-0">MEN</p>
         <img
           className="shadow-2xl -rotate-6"
           src={men}
@@ -45,7 +45,7 @@ const Home = () => {
         to={"/women/categories"}
         className="relative self-center col-start-4 col-end-6 md:col-start-6 md:col-end-8 lg:col-start-8 lg:col-end-10 row-start-3 row-end-7 hover-gender"
       >
-        <p className="gender">WOMEN</p>
+        <p className="gender opacity-1 lg:opacity-0">WOMEN</p>
         <img
           className="women rotate-6 mt-[3vh] shadow-2xl "
           src={women}

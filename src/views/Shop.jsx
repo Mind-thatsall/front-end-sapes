@@ -3,9 +3,12 @@ import categorie from "@/assets/images/men.jpg";
 import { useRef } from "react";
 import { useEffect } from "react";
 import Card from "@/components/Card";
+import { useLocation } from "react-router-dom";
 
-const Shop = ({ CategorieName = "SHOP" }) => {
+const Shop = () => {
   const scrollBoxRef = useRef(null);
+  const location = useLocation();
+  const categorieName = location.pathname.split("/")[3].toUpperCase();
 
   function maxSize() {
     console.log("test");
@@ -30,7 +33,7 @@ const Shop = ({ CategorieName = "SHOP" }) => {
           fontFamily: "ClashDisplay-SemiBold",
         }}
       >
-        {CategorieName}
+        {categorieName}
       </h2>
       <span className="w-[98%] block h-1 bg-[#796B66] mix-blend-difference"></span>
       <div
