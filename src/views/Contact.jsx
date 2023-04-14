@@ -2,9 +2,9 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="grid grid-cols-12 grid-rows-12 min-h-screen ">
+    <div className="grid grid-cols-12 grid-rows-12 min-h-screen max-h-screen overflow-y-auto " >
 
-<div className="pt-10 col-start-2 col-end-12 md:col-end-5 row-start-2 row-end-12 md:row-start-2 m-auto md:mr-auto md:ml-0">        
+<div className="pt-10 col-start-2 col-end-12 row-start-6 row-end-12 sm:row-start-2 sm:row-end-5 m-auto md:ml-0">        
         <h3 style={{ fontFamily: "ClashDisplay-Bold" }} className="text-xl">OPEN DAILY </h3>
         <p style={{ fontFamily: "ClashDisplay-Medium" }}  className="mb-5 ">9am to 7pm</p>
         <hr style={{ borderColor: "black", margin: "10px 0" }} />
@@ -21,7 +21,7 @@ const Contact = () => {
         <p style={{ fontFamily: "ClashDisplay-Medium" }}  className="mb-5">10 rue de Penthievre - 75008 - Paris</p>
       </div>
 
-      <div className=" mt-20 col-start-2 md:col-start-5 col-end-12 row-start-1 md:row-start-2 row-end-12 p-6 m-auto bg-white rounded-md shadow-md">
+      <div className="mt-20 col-start-2 col-end-12 md:col-start-4 md:col-end-12 md:row-start-3 md:row-end-12 row-start-2 row-end-5 p-6 m-auto bg-white rounded-md shadow-md ">
         <h1 
             style={{ fontFamily: "ClashDisplay-Bold" }}
             className="text-2xl md:text-3xl lg:text-4xl font-bold text-center">
@@ -97,7 +97,8 @@ const Contact = () => {
           
         </form>
       </div>
-    </div>
+      </div>
+   
   );
 };
 
