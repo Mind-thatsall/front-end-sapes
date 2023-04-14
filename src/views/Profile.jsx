@@ -3,7 +3,7 @@ import React from "react";
 
 const Profile = () => {
   return (
-    <div className="grid grid-cols-12 grid-rows-12 min-h-screen ">
+    <div className="grid grid-cols-12 grid-rows-12 min-h-screen max-h-screen overflow-y-auto">
 
 
 <div className="col-start-2 row-start-2 col-span-10 sm:col-span-12 md:col-start-5 md:col-span-8 lg:col-start-4 lg:col-span-6 mt-20 p-6 m-auto bg-white rounded-md shadow-md">        
