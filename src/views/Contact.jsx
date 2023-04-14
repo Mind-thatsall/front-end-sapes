@@ -4,7 +4,8 @@ const Contact = () => {
   return (
     <div className="grid grid-cols-12 grid-rows-12 min-h-screen ">
 
-<div className="pt-10 col-start-2 col-end-12 md:col-end-5 row-start-2 row-end-12 md:row-start-2 m-auto md:mr-auto md:ml-0">        <h3 style={{ fontFamily: "ClashDisplay-Bold" }}  className="text-xl">OPEN DAILY </h3>
+<div className="pt-10 col-start-2 col-end-12 md:col-end-5 row-start-2 row-end-12 md:row-start-2 m-auto md:mr-auto md:ml-0">        
+        <h3 style={{ fontFamily: "ClashDisplay-Bold" }} className="text-xl">OPEN DAILY </h3>
         <p style={{ fontFamily: "ClashDisplay-Medium" }}  className="mb-5 ">9am to 7pm</p>
         <hr style={{ borderColor: "black", margin: "10px 0" }} />
         
