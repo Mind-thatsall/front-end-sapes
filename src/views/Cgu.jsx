@@ -40,8 +40,8 @@ const CGU = () => {
     <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-12 lg:grid-rows-12 min-h-screen">
 
       <section 
-      style={{ position: "fixed", top: "150px", left: "50px"}} className="col-start-2 col-end-12 row-start-2 row-end-12 md:col-start-1 lg:col-start-1 lg:col-end-10 lg:row-start-3 lg:row-end-11 max-h-screen overflow-y-auto">
-        <div className="container flex flex-col p-4 ">
+      style={{ position: "fixed", top: "100px", marginLeft:"15vw"}} className="md:col-start-1 lg:col-start-1 lg:col-end-7 lg:row-start-2 lg:row-end-11 max-h-screen overflow-y-auto">
+        <div className="container flex flex-col p-4 w-5/6">
 		
           <h2 
             style={{ fontFamily: "ClashDisplay-Bold" }}
@@ -52,7 +52,7 @@ const CGU = () => {
 
           <div style={{ fontFamily: "ClashDisplay-Medium" }} className="flex flex-col divide-y divide-gray-700">
             <details>
-              <summary className="py-2 outline-none cursor-pointer focus:underline text-2xl  ">
+              <summary className="py-2 outline-none cursor-pointer focus:underline text-2xl ">
                 GENERAL
               </summary>
               <div className="pb-4 text-base">
