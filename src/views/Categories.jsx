@@ -8,7 +8,6 @@ const Categories = ({ gender }) => {
   const scrollBoxRef = useRef(null);
 
   function maxSize() {
-    console.log("test");
     scrollBoxRef.current.style.height =
       window.innerHeight - scrollBoxRef.current.offsetTop + "px";
   }
