@@ -12,7 +12,7 @@ const CategorieCard = ({ picture, categorieName, slug }) => {
         height={450}
       />
       <p
-        className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[3vw] text-[#f9e9db] mix-blend-difference"
+        className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[5vw] lg:text-[3vw] text-[#f9e9db] mix-blend-difference"
         style={{ fontFamily: "ClashDisplay-SemiBold" }}
       >
         {categorieName}

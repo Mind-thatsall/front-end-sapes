@@ -1,23 +1,34 @@
 import { Link } from "react-router-dom";
 import { useRef } from "react";
-import { openSearch } from "@/utils/animations";
+import { openSearch, closeMenu, toggleMenu } from "@/utils/animations";
 import SearchBar from "@/components/SearchBar";
 import Menu from "@/components/Menu";
+import { useState } from "react";
 
 const Navbar = () => {
   const inputRef = useRef(null);
   const bgModalRef = useRef(null);
+  const menuRef = useRef(null);
+  const [menuOpened, setMenuOpened] = useState(false);
 
   return (
     <>
       <SearchBar inputRef={inputRef} bgModalRef={bgModalRef} />
-      <Menu />
+      <Menu menuRef={menuRef} setMenu={setMenuOpened} />
       <nav
         className="z-[2] mix-blend-difference text-[#796B66] fixed flex justify-between w-full px-[4vw] md:px-[6vw] mt-[1.25vh] text-[4vw] md:text-[2vw] lg:text-[1vw]"
         style={{ fontFamily: "ClashDisplay-Medium" }}
       >
         <ul className="flex gap-[2vw]">
-          <li className="lg:hidden">MENU</li>
+          <li
+            className="lg:hidden"
+            onClick={() => {
+              setMenuOpened(!menuOpened);
+              toggleMenu(menuRef.current, menuOpened);
+            }}
+          >
+            {menuOpened ? "CLOSE" : "MENU"}
+          </li>
           <li className="hidden lg:block">
             <Link to="/">HOME</Link>
           </li>
