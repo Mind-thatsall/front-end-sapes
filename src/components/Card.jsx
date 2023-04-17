@@ -3,7 +3,10 @@ import product from "@/assets/images/men.jpg";
 
 const Card = () => {
   return (
-    <div style={{ fontFamily: "ClashDisplay-Medium" }} className="h-fit w-fit">
+    <div
+      style={{ fontFamily: "ClashDisplay-Medium" }}
+      className="h-fit w-fit mb-[1vh]"
+    >
       <img src={product} alt="Black Hoodie" width={310} height={450} />
       <div className="flex justify-between items-center">
         <div className="flex flex-col justify-center">
