@@ -2,10 +2,16 @@ import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { openSearch, closeSearch } from "@/utils/animations";
 import React, { useState, useEffect } from "react";
+import { openSearch, closeMenu, toggleMenu } from "@/utils/animations";
+import SearchBar from "@/components/SearchBar";
+import Menu from "@/components/Menu";
+import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ cartSize }) => {
   const inputRef = useRef(null);
   const bgModalRef = useRef(null);
+  const menuRef = useRef(null);
+  const [menuOpened, setMenuOpened] = useState(false);
 
   // State variable with the current date and time as initial value
   const [dateTime, setDateTime] = useState(new Date());
@@ -23,29 +29,22 @@ const Navbar = () => {
 
   return (
     <>
-      <form
-        ref={inputRef}
-        action=""
-        className="opacity-0 absolute z-[10] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
-      >
-        <input
-          className="px-[15px] py-[10px] w-[300px] md:w-[400px] text-[#222421] bg-[#9F948B] border-2 border-[#222421] focus:border-4 focus-visible:outline-none transition-all placeholder:text-[#222421]/80"
-          type="text"
-          name=""
-          placeholder="Black hoodie..."
-        />
-      </form>
-      <span
-        ref={bgModalRef}
-        onClick={() => closeSearch(inputRef.current, bgModalRef.current)}
-        className="opacity-0 absolute w-full h-full bg-[#22242180] pointer-events-none z-[9]"
-      ></span>
+      <SearchBar inputRef={inputRef} bgModalRef={bgModalRef} />
+      <Menu menuRef={menuRef} setMenu={setMenuOpened} />
       <nav
         className="z-[2] mix-blend-difference text-[#796B66] fixed flex justify-between w-full px-[4vw] md:px-[6vw] mt-[1.25vh] text-[4vw] md:text-[2vw] lg:text-[1vw]"
         style={{ fontFamily: "ClashDisplay-Medium" }}
       >
         <ul className="flex gap-[2vw]">
-          <li className="lg:hidden">MENU</li>
+          <li
+            className="lg:hidden"
+            onClick={() => {
+              setMenuOpened(!menuOpened);
+              toggleMenu(menuRef.current, menuOpened);
+            }}
+          >
+            {menuOpened ? "CLOSE" : "MENU"}
+          </li>
           <li className="hidden lg:block">
             <Link to="/">HOME</Link>
           </li>
@@ -71,7 +70,9 @@ const Navbar = () => {
             <Link to="/login">CONNECT</Link>
           </li>
           <li>
-            <Link to="/cart">CART 00</Link>
+            <Link to="/cart">
+              CART {cartSize > 10 ? cartSize : "0" + cartSize}
+            </Link>
           </li>
         </ul>
       </nav>

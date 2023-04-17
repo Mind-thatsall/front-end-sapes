@@ -1,8 +1,8 @@
 import gsap from "gsap";
 
-export function openSearch(input, modal) {
-  console.log("launch");
+// These functions are used to animate some elements using gsap like the menu for phones and tablets or the search modal
 
+export function openSearch(input, modal) {
   gsap.fromTo(
     modal,
     {
@@ -30,6 +30,10 @@ export function openSearch(input, modal) {
       pointerEvents: "auto",
     }
   );
+
+  gsap.set(input.children[0], {
+    pointerEvents: "auto",
+  });
 }
 
 export function closeSearch(input, modal) {
@@ -60,4 +64,51 @@ export function closeSearch(input, modal) {
       pointerEvents: "none",
     }
   );
+
+  gsap.set(input.children[0], {
+    pointerEvents: "none",
+  });
+}
+
+export function toggleMenu(menu, menuOpened) {
+  if (menuOpened) {
+    gsap.fromTo(
+      menu,
+      {
+        clipPath: "circle(100%)",
+        opacity: 1,
+        pointerEvents: "auto",
+      },
+      {
+        clipPath: "circle(0%)",
+        pointerEvents: "none",
+        opacity: 0,
+        duration: 0.25,
+      }
+    );
+  } else {
+    gsap.fromTo(
+      menu,
+      {
+        clipPath: "circle(0%)",
+        opacity: 0,
+        pointerEvents: "none",
+      },
+      {
+        clipPath: "circle(100%)",
+        pointerEvents: "auto",
+        opacity: 1,
+        duration: 0.25,
+      }
+    );
+  }
+}
+
+export function closeMenu(menu) {
+  gsap.to(menu, {
+    clipPath: "circle(0%)",
+    pointerEvents: "none",
+    opacity: 0,
+    duration: 0.25,
+  });
 }
