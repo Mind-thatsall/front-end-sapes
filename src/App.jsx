@@ -13,6 +13,8 @@ import Contact from "@/views/Contact";
 import Noise from "@/components/Noise";
 import Navbar from "@/components/Navbar";
 import SideBars from "@/components/Sidebars";
+import Account from "./components/Account";
+import History from "./components/History";
 
 function App() {
   return (
