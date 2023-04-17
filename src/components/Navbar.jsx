@@ -5,7 +5,7 @@ import SearchBar from "@/components/SearchBar";
 import Menu from "@/components/Menu";
 import { useState } from "react";
 
-const Navbar = () => {
+const Navbar = ({ cartSize }) => {
   const inputRef = useRef(null);
   const bgModalRef = useRef(null);
   const menuRef = useRef(null);
@@ -55,7 +55,9 @@ const Navbar = () => {
             <Link to="/login">CONNECT</Link>
           </li>
           <li>
-            <Link to="/cart">CART 00</Link>
+            <Link to="/cart">
+              CART {cartSize > 10 ? cartSize : "0" + cartSize}
+            </Link>
           </li>
         </ul>
       </nav>

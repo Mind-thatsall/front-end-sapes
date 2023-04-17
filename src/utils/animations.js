@@ -1,5 +1,7 @@
 import gsap from "gsap";
 
+// These functions are used to animate some elements using gsap like the menu for phones and tablets or the search modal
+
 export function openSearch(input, modal) {
   gsap.fromTo(
     modal,
