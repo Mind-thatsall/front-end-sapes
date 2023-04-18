@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { openSearch, closeSearch } from "@/utils/animations";
 import React, { useState, useEffect, useRef } from "react";
-import {closeMenu, toggleMenu } from "@/utils/animations";
+import { openSearch, toggleMenu } from "@/utils/animations";
 import SearchBar from "@/components/SearchBar";
 import Menu from "@/components/Menu";
+import { getTime } from "@/utils/functions";
 
 const Navbar = ({ cartSize }) => {
   const inputRef = useRef(null);
@@ -12,18 +12,16 @@ const Navbar = ({ cartSize }) => {
   const [menuOpened, setMenuOpened] = useState(false);
 
   // State variable with the current date and time as initial value
-  const [dateTime, setDateTime] = useState(new Date());
+  const [dateTime, setDateTime] = useState(getTime());
 
   // Use the useEffect hook to update the dateTime state variable every second
   useEffect(() => {
+
     const interval = setInterval(() => {
-      setDateTime(new Date());
+      setDateTime(getTime());
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  // Format the dateTime state variable to display the time and date
-  const formattedDateTime = `${dateTime.toLocaleTimeString()} - ${dateTime.toLocaleDateString()}`;
 
   return (
     <>
@@ -55,8 +53,8 @@ const Navbar = ({ cartSize }) => {
           </li>
         </ul>
         <p className="hidden lg:block" style={{ wordSpacing: "0.4vw" }}>
-          {formattedDateTime} | <Link to="/cgu">CGU</Link>{" "}
-          <Link to="/contact">CONTACT</Link> | MADE IN FRANCE
+          {dateTime} | <Link to="/cgu">CGU</Link> <Link to="/contact">CONTACT</Link> | MADE
+          IN FRANCE
         </p>
         <ul className="flex gap-[2vw]">
           <li

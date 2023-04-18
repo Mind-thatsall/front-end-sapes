@@ -15,13 +15,13 @@ const Cart = ({ items, removeFromCart }) => {
   return (
     <div className="h-screen px-[4vw] md:px-[6vw] lg:px-[4vw] flex justify-center items-center text-[#222421]">
       <div
-        className="w-[890px] h-[65vh] bg-[#9F948B] border-[4px] border-[#222421] p-[20px] flex gap-6"
+        className="w-[890px] h-[65vh] bg-[#9F948B] border-[4px] border-[#222421] p-[20px] flex gap-4"
         style={{ fontFamily: "ClashDisplay-Medium" }}
       >
         {items && items.length > 0 ? (
           <>
             <div className="hide-scroll hidden lg:block w-[620px] h-full lg:overflow-auto">
-              <div className="grid grid-cols-2 h-fit w-full grid-flow-row gap-3">
+              <div className="grid w-full grid-flow-row grid-cols-2 gap-3 h-fit">
                 {items.map((item) => (
                   <img
                     key={item.id}
@@ -35,7 +35,7 @@ const Cart = ({ items, removeFromCart }) => {
               </div>
             </div>
             <span className="w-1 h-full bg-[#222421] hidden lg:block"></span>
-            <div className="w-full flex flex-col gap-5">
+            <div className="flex flex-col w-full gap-5">
               <div className="hide-scroll w-full h-[80%] overflow-auto flex flex-col gap-5">
                 {items.map((item) => (
                   <ArticleCart
@@ -46,7 +46,7 @@ const Cart = ({ items, removeFromCart }) => {
                 ))}
               </div>
               <span className="w-full h-1 bg-[#222421]"></span>
-              <div className="flex justify-between items-center">
+              <div className="flex items-center justify-between">
                 <p>
                   {items.length} ARTICLES FOR {calculateTotal(items)}$
                 </p>
@@ -60,7 +60,7 @@ const Cart = ({ items, removeFromCart }) => {
             </div>
           </>
         ) : (
-          <div className="w-full h-full flex justify-center items-center">
+          <div className="flex items-center justify-center w-full h-full">
             <p className="w-[260px] text-center">
               NO ITEMS WERE FOUND, START GETTING SOME AT THE{" "}
               <Link

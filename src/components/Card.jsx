@@ -20,13 +20,13 @@ const Card = ({ addToCartMutation, ...article }) => {
             {article.price}$
           </p>
         </div>
-        <p
-          className="text-[12vw] pr-[0.5vw] md:pr-0 md:text-[7vw] lg:text-[6vw] leading-[4vw] hover:cursor-pointer"
+        <button
+          className="text-[12vw] pr-[0.5vw] md:pr-0 md:text-[7vw] lg:text-[6vw] leading-[4vw] hover:cursor-pointer active:scale-75 transition-transform"
           style={{ fontFamily: "ClashDisplay-Light" }}
           onClick={() => addToCartMutation(article)}
         >
           +
-        </p>
+        </button>
       </div>
     </div>
   );
