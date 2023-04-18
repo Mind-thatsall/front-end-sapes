@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { openSearch, closeSearch } from "@/utils/animations";
 import React, { useState, useEffect } from "react";
-import { openSearch, closeMenu, toggleMenu } from "@/utils/animations";
+import {closeMenu, toggleMenu } from "@/utils/animations";
 import SearchBar from "@/components/SearchBar";
 import Menu from "@/components/Menu";
-import { useState } from "react";
+
 
 const Navbar = ({ cartSize }) => {
   const inputRef = useRef(null);
