@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { openSearch, closeSearch } from "@/utils/animations";
 import React, { useState, useEffect, useRef } from "react";
-import { openSearch, toggleMenu } from "@/utils/animations";
+import {closeMenu, toggleMenu } from "@/utils/animations";
 import SearchBar from "@/components/SearchBar";
 import Menu from "@/components/Menu";
 
@@ -54,7 +55,7 @@ const Navbar = ({ cartSize }) => {
           </li>
         </ul>
         <p className="hidden lg:block" style={{ wordSpacing: "0.4vw" }}>
-          {formattedDateTime} | <Link to="/contact">CGU</Link>{" "}
+          {formattedDateTime} | <Link to="/cgu">CGU</Link>{" "}
           <Link to="/contact">CONTACT</Link> | MADE IN FRANCE
         </p>
         <ul className="flex gap-[2vw]">
