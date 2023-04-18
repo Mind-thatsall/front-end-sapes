@@ -17,7 +17,7 @@ const Account = () => {
           </label>
           <input
             type="text"
-            className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 " />
+            className="block w-full px-4 py-2 mt-2 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]" />
         </div>
 
         <div className="mb-2 sm:ml-2 sm:w-1/2">
@@ -28,7 +28,7 @@ const Account = () => {
           </label>
           <input
             type="text"
-            className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 " />
+            className="block w-full px-4 py-2 mt-2 text-black-700 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]" />
         </div>
       </div>
 
@@ -40,7 +40,7 @@ const Account = () => {
         </label>
         <input
           type="email"
-          className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 " />
+          className="block w-full px-4 py-2 mt-2 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]" />
       </div>
       <div className="flex flex-col md:flex-row">
         <div className="mb-2 md:mr-2">
@@ -51,7 +51,7 @@ const Account = () => {
           </label>
           <input
             type="text"
-            className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 " />
+            className="block w-full px-4 py-2 mt-2 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]" />
         </div>
 
         <div className="mb-2 md:ml-2">
@@ -62,7 +62,7 @@ const Account = () => {
           </label>
           <input
             type="text"
-            className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 " />
+            className="block w-full px-4 py-2 mt-2 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]" />
         </div>
       </div>
       <div className="mb-2">
@@ -73,7 +73,7 @@ const Account = () => {
         </label>
         <input
           type="text"
-          className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 " />
+          className="block w-full px-4 py-2 mt-2 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190] " />
       </div>
 
       <div className="flex flex-col md:flex-row">
@@ -85,7 +85,7 @@ const Account = () => {
           </label>
           <input
             type="text"
-            className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 " />
+            className="block w-full px-4 py-2 mt-2 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190] " />
         </div>
 
         <div className="mb-2 md:ml-2">
@@ -96,7 +96,7 @@ const Account = () => {
           </label>
           <input
             type="text"
-            className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 " />
+            className="block w-full px-4 py-2 mt-2 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]" />
         </div>
       </div>
 
@@ -107,13 +107,13 @@ const Account = () => {
         <div className="flex flex-col sm:flex-row">
           <div className="mb-2 sm:mr-2 sm:w-1/2">
             <div className="mt-6">
-              <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-black rounded-md hover:bg-gray-700  ">Update</button>
+              <button className="w-full px-4 py-2 tracking-wide text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] ">Update</button>
             </div>
           </div>
 
           <div className="mb-2 sm:ml-2 sm:w-1/2">
             <div className="mt-6">
-              <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-black rounded-md hover:bg-gray-700  ">Delete</button>
+              <button className="w-full px-4 py-2 tracking-wide text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] ">Delete</button>
             </div>
           </div>
         </div>

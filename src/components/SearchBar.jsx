@@ -10,7 +10,7 @@ const SearchBar = ({ inputRef, bgModalRef }) => {
         className="opacity-0 absolute z-[10] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] pointer-events-none"
       >
         <input
-          className="pointer-events-none px-[15px] py-[10px] w-[300px] md:w-[400px] text-[#222421] bg-[#9F948B] border-2 border-[#222421] focus:border-4 focus-visible:outline-none transition-all placeholder:text-[#222421]/80"
+          className="pointer-events-none px-[15px] py-[10px] w-[300px] md:w-[400px] text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus:bg-[#90867d] focus-visible:outline-none transition-all placeholder:text-[#222421]/80"
           type="text"
           name=""
           placeholder="Black hoodie..."
