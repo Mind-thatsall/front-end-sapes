@@ -54,7 +54,7 @@ const Navbar = ({ cartSize }) => {
           </li>
         </ul>
         <p className="hidden lg:block" style={{ wordSpacing: "0.4vw" }}>
-          {formattedDateTime} | <Link to="/contact">CGU</Link>{" "}
+          {formattedDateTime} | <Link to="/cgu">CGU</Link>{" "}
           <Link to="/contact">CONTACT</Link> | MADE IN FRANCE
         </p>
         <ul className="flex gap-[2vw]">
