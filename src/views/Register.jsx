@@ -13,31 +13,7 @@ const Register = () => {
         
         <form 
           style={{ fontFamily: "ClashDisplay-Medium" }}
-          className="mt-6 text-xl"
-        >
-         <div className="mb-2">
-            <label  
-              for="firstname"
-              className="block">
-              Firstname
-            </label>
-            <input 
-              type="text"
-              className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 ">
-            </input>
-          </div>
-
-          <div className="mb-2">
-            <label  
-              for="lastname"
-              className="block">
-              Lastname
-            </label>
-            <input 
-              type="text"
-              className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 ">
-            </input>
-          </div>
+          className="mt-6 text-xl">
 
           <div className="mb-2">
             <label  
@@ -51,29 +27,53 @@ const Register = () => {
             </input>
           </div>
 
-          <div className="mb-2">
-            <label
-              for="password"
+          <div className="flex flex-col md:flex-row"> 
+          <div className="mb-2 md:mr-2">
+            <label  
+              htmlFor="firstname"
+              className="block">
+              Firstname
+            </label>
+            <input 
+              type="text"
+              className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 "/>
+          </div>
+
+          <div className="mb-2 md:ml-2">
+            <label  
+              htmlFor="lastname"
+              className="block">
+              Lastname
+            </label>
+            <input 
+              type="text"
+              className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 "/>
+          </div>
+          </div> 
+
+           <div className="flex flex-col md:flex-row"> 
+         <div className="mb-2 md:mr-2">
+            <label  
+              htmlFor="password"
               className="block">
               Password
             </label>
             <input 
               type="password"
-              className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 ">
-            </input>
+              className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 "/>
           </div>
 
-          <div className="mb-2">
-            <label
-              for="password"
+          <div className="mb-2 md:ml-2">
+            <label  
+              htmlFor="confirmpassword"
               className="block">
               Confirm Password
             </label>
             <input 
               type="password"
-              className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 ">
-            </input>
+              className="block w-full px-4 py-2 mt-2 text-black-700 border rounded-lg focus:border-black-900 "/>
           </div>
+        </div>   
 
           <div className="form-control mt-5 text-xs">
             <label className="label cursor-pointer">
