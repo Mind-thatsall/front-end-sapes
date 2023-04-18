@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { openSearch, closeSearch } from "@/utils/animations";
 import React, { useState, useEffect, useRef } from "react";
-import { openSearch, toggleMenu } from "@/utils/animations";
+import {closeMenu, toggleMenu } from "@/utils/animations";
 import SearchBar from "@/components/SearchBar";
 import Menu from "@/components/Menu";
 
