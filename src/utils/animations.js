@@ -112,3 +112,42 @@ export function closeMenu(menu) {
     duration: 0.25,
   });
 }
+
+
+export function toggleFilters(filters, filtersOpened) {
+  if (filtersOpened) {
+    gsap.fromTo(
+      filters,
+      {
+        y: 0,
+        opacity: 1,
+        pointerEvents: "auto",
+      },
+      {
+        y: 15,
+        opacity: 0,
+        pointerEvents: "none",
+        duration: 0.25,
+      }
+    );
+
+
+  } else {
+    gsap.fromTo(
+      filters,
+      {
+        y: 15,
+        opacity: 0,
+        pointerEvents: "none",
+      },
+      {
+        y: 0,
+        opacity: 1,
+        pointerEvents: "auto",
+        duration: 0.25,
+      }
+    );
+
+
+  }
+}
