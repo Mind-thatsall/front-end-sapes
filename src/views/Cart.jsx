@@ -1,8 +1,17 @@
 import product from "@/assets/images/men.jpg";
 import ArticleCart from "@/components/ArticleCart";
 import { Link } from "react-router-dom";
+import { useAuth } from "../components/AuthProvider";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Cart = ({ items, removeFromCart }) => {
+  const navigate = useNavigate();
+  const {token} = useAuth();
+  useEffect (()=>{
+    if (!token) navigate(-1);
+  },[])
+
   function calculateTotal(items) {
     let result = 0;
     for (const item in items) {

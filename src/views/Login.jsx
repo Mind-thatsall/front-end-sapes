@@ -1,19 +1,31 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../components/AuthProvider";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
+  const {setToken,token} = useAuth();
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
+    
+
       await axios.post(import.meta.env.VITE_API_URL + "api/login_check", {
         username: email,
         password: password,
       })
-      .then((response) => console.log(response))
+      .then((response) => {
+        setToken(response.data.token);
+        console.log(response.data);
+        Cookies.set("token",token);
+        navigate("/");
+      })
       .catch((error) => console.log(error))
   }
 
