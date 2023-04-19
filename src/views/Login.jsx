@@ -1,13 +1,15 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
 
-  const handleSubmit = async () => {
-      await axios.post(import.meta.env.API_URL + "api/login_check", {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+      await axios.post(import.meta.env.VITE_API_URL + "api/login_check", {
         username: email,
         password: password,
       })

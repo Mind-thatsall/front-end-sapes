@@ -74,13 +74,13 @@ const Register = () => {
 
     if (checkInputs()) {
       await axios
-        .post(import.meta.env.API_URL + "api/users", {
+        .post(import.meta.env.VITE_API_URL + "api/users", {
           email: email,
           firstname: firstName,
           lastname: lastName,
           password: password,
           newsletter: newsLetter,
-          roles: ["ROLES_USER"],
+          roles: ["ROLE_USER"],
         })
         .then(() => {
           navigate("/login");
