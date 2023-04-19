@@ -63,6 +63,7 @@ const Register = () => {
 
     // We put all the errors inside the state
     setErrors(errorsObj);
+    console.log(typeof errorsObj["password"]);
 
     // We return a boolean checking if there's any errors to make the post request
     return Object.keys(errorsObj).length === 0;
@@ -98,8 +99,8 @@ const Register = () => {
           Register
         </h1>
 
-        {errors["password"] &&
-          Object.values(errors["password"]).map((error, index) => <p key={index}>{error}</p>)}
+        {(errors["password"] && typeof errors["password"] !== "string") ?
+          Object.values(errors["password"]).map((error, index) => <p key={index}>{error}</p>) : ""}
 
         <form
           style={{ fontFamily: "ClashDisplay-Medium" }}
