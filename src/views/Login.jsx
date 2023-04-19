@@ -1,6 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const handleSubmit = async () => {
+      await axios.post(import.meta.env.API_URL + "api/login_check", {
+        username: email,
+        password: password,
+      })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error))
+  }
+
+
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden uppercase">
      <div className="p-6 m-auto bg-[#9F948B] border-2 border-[#222421] shadow-xl lg:max-w-xl">
@@ -14,6 +29,7 @@ const Login = () => {
         <form
           style={{ fontFamily: "ClashDisplay-Medium" }}
           className="mt-6 text-xl"
+          onSubmit={handleSubmit}
         >
 
           <div className="mb-2">
@@ -24,6 +40,7 @@ const Login = () => {
             </label>
             <input
               type="email"
+              onChange={(e) => setEmail(e.target.value)}
               className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]">
             </input>
           </div>
@@ -36,6 +53,7 @@ const Login = () => {
             </label>
             <input
               type="password"
+              onChange={(e) => setPassword(e.target.value)}
               className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]">
             </input>
           </div>
@@ -47,7 +65,7 @@ const Login = () => {
         </form>
 
         <p className="mt-8 text-xs text-center">
-        {" "} Don't have an account ? {" "} <a className="hover:underline"> Sign up </a>
+        {" "} Don't have an account ? {" "} <Link to="/register" className="hover:underline"> Sign up </Link>
         </p>
 
       </div>
