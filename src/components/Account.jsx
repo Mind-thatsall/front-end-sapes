@@ -113,7 +113,13 @@ const Account = () => {
 
           <div className="mb-2 sm:ml-2 sm:w-1/2">
             <div className="mt-6">
-              <button className="w-full px-4 py-2 tracking-wide text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] ">Delete</button>
+              <button className="w-full px-4 py-2 tracking-wide text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] ">Delete account</button>
+            </div>
+          </div>
+
+          <div className="mb-2 sm:ml-2 sm:w-1/2">
+            <div className="mt-6">
+              <button className="w-full px-4 py-2 tracking-wide text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] ">Log out</button>
             </div>
           </div>
         </div>
