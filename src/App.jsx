@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import Home from "@/views/Home";
 import Categories from "@/views/Categories";
 import Shop from "@/views/Shop";
@@ -20,8 +20,11 @@ import {
   addCartItem,
   deleteCartItem,
 } from "@/services/cartApi";
+import { useAuth } from "./components/AuthProvider";
 
 function App() {
+  const { token } = useAuth();
+  const navigate = useNavigate();
   const {
     data: cartItems,
     mutate,
@@ -29,12 +32,17 @@ function App() {
   } = useSWR(cartApiEndPoint, getCartItems);
 
   const addToCartMutation = async (newItem) => {
-    try {
-      await addCartItem(newItem);
-      mutate();
-    } catch (e) {
-      throw new Error("Error adding to cart", e.message);
+    if(token) {
+      try {
+        await addCartItem(newItem);
+        mutate();
+      } catch (e) {
+        throw new Error("Error adding to cart", e.message);
+      }
+    } else {
+      navigate("/login")
     }
+    
   };
 
   const removeCartMutation = async (id) => {
@@ -45,6 +53,7 @@ function App() {
       throw new Error("Error removing from cart", e.message);
     }
   };
+
 
   return (
     <div className="App bg-[#9F948B]">
@@ -76,19 +85,17 @@ function App() {
           path="/shop"
           element={<Shop addToCartMutation={addToCartMutation} />}
         />
-        <Route path="/article/:id" element={<Article />} />
+        <Route path="/article/:id" element={<Article addToCartMutation={addToCartMutation} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/cart"
-          element={
-            <Cart items={cartItems} removeFromCart={removeCartMutation} />
-          }
+          element={token ? <Cart items={cartItems} removeFromCart={removeCartMutation} /> : <Navigate to="/login"/>}
         />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/cgu" element={<Cgu />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={token ? <Profile /> : <Navigate to="/login" />} />
       </Routes>
     </div>
   );

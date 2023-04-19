@@ -1,36 +1,21 @@
 import React from "react";
-
+import Cookies from "js-cookie"
+import { useAuth } from "./AuthProvider";
 
 const Account = () => {
+  const { setToken } = useAuth()
+
+  function handleLogout() {
+    setToken(null);
+    Cookies.remove("token")
+  }
+  
   return (
 
     <form
       style={{ fontFamily: "ClashDisplay-Medium" }}
-      className="mt-6 text-xl"
+      className="mt-6 text-xl uppercase"
     >
-      <div className="flex flex-col sm:flex-row">
-        <div className="mb-2 sm:mr-2 sm:w-1/2">
-          <label
-            htmlFor="firstname"
-            className="block">
-            Firstname
-          </label>
-          <input
-            type="text"
-            className="block w-full px-4 py-2 mt-2 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]" />
-        </div>
-
-        <div className="mb-2 sm:ml-2 sm:w-1/2">
-          <label
-            htmlFor="lastname"
-            className="block">
-            Lastname
-          </label>
-          <input
-            type="text"
-            className="block w-full px-4 py-2 mt-2 text-black-700 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]" />
-        </div>
-      </div>
 
       <div className="mb-2">
         <label
@@ -107,19 +92,19 @@ const Account = () => {
         <div className="flex flex-col sm:flex-row">
           <div className="mb-2 sm:mr-2 sm:w-1/2">
             <div className="mt-6">
-              <button className="w-full px-4 py-2 tracking-wide text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] ">Update</button>
+              <button className="w-full px-4 py-2 tracking-wide text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] uppercase text-base">Update</button>
             </div>
           </div>
 
           <div className="mb-2 sm:ml-2 sm:w-1/2">
             <div className="mt-6">
-              <button className="w-full px-4 py-2 tracking-wide text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] ">Delete account</button>
+              <button className="w-full px-4 py-2 tracking-wide text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] uppercase text-base">Delete account</button>
             </div>
           </div>
 
           <div className="mb-2 sm:ml-2 sm:w-1/2">
             <div className="mt-6">
-              <button className="w-full px-4 py-2 tracking-wide text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] ">Log out</button>
+              <button onClick={handleLogout} className="w-full px-4 py-2 tracking-wide text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] uppercase text-base">Log out</button>
             </div>
           </div>
         </div>

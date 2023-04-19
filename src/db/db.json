@@ -1,0 +1,57 @@
+{
+  "cart": [],
+  "products": [
+    {
+      "id": "eazjolgjoia",
+      "name": "BLACK HOODIE",
+      "price": 50,
+      "color": "black",
+      "slug": "black-hoodie",
+      "availableSize": [
+        {
+          "size": "M",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "eazjolgjoib",
+      "name": "YELLOW SHIRT",
+      "price": 50,
+      "color": "black",
+      "slug": "black-hoodie",
+      "availableSize": [
+        {
+          "size": "M",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "eazjolgjoic",
+      "name": "BLACK SOCKS",
+      "price": 50,
+      "color": "black",
+      "slug": "black-hoodie",
+      "availableSize": [
+        {
+          "size": "M",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "eazjolgjoid",
+      "name": "T-SHIRT",
+      "price": 50,
+      "color": "black",
+      "slug": "black-hoodie",
+      "availableSize": [
+        {
+          "size": "M",
+          "quantity": 10
+        }
+      ]
+    }
+  ]
+}

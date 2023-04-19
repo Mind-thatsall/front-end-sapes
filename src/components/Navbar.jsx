@@ -4,12 +4,14 @@ import { openSearch, toggleMenu } from "@/utils/animations";
 import SearchBar from "@/components/SearchBar";
 import Menu from "@/components/Menu";
 import { getTime } from "@/utils/functions";
+import { useAuth } from "./AuthProvider";
 
 const Navbar = ({ cartSize }) => {
   const inputRef = useRef(null);
   const bgModalRef = useRef(null);
   const menuRef = useRef(null);
   const [menuOpened, setMenuOpened] = useState(false);
+  const { token } = useAuth()
 
   // State variable with the current date and time as initial value
   const [dateTime, setDateTime] = useState(getTime());
@@ -64,7 +66,7 @@ const Navbar = ({ cartSize }) => {
             SEARCH
           </li>
           <li className="hidden lg:block">
-            <Link to="/login">CONNECT</Link>
+            { token ? <Link to="/profile">PROFILE</Link> : <Link to="/login">CONNECT</Link>}
           </li>
           <li>
             <Link to="/cart">

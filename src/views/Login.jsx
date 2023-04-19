@@ -14,6 +14,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     
     e.preventDefault();
+
+      setToken("eiujazioug");
+        Cookies.set("token", "eiujazioug");
     
 
       await axios.post(import.meta.env.VITE_API_URL + "api/login_check", {
