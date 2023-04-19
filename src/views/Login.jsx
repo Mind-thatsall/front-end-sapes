@@ -15,10 +15,6 @@ const Login = () => {
     
     e.preventDefault();
 
-      setToken("eiujazioug");
-        Cookies.set("token", "eiujazioug");
-    
-
       await axios.post(import.meta.env.VITE_API_URL + "api/login_check", {
         username: email,
         password: password,
