@@ -1,15 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from '@/App'
-import '@/index.css'
-import '@/animations.css'
-import '@/assets/fonts/clash-display.css'
-import { BrowserRouter } from "react-router-dom"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "@/index.css";
+import "@/animations.css";
+import "@/assets/fonts/clash-display.css";
+import { BrowserRouter } from "react-router-dom";
+import AuthProvider from "./components/AuthProvider";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </BrowserRouter>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
