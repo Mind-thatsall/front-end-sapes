@@ -15,7 +15,6 @@ const Cart = ({ items, removeFromCart }) => {
   function calculateTotal(items) {
     let result = 0;
     for (const item in items) {
-      console.log(item);
       result += items[item].price;
     }
     return result;
@@ -32,6 +31,7 @@ const Cart = ({ items, removeFromCart }) => {
             <div className="hide-scroll hidden lg:block w-[620px] h-full lg:overflow-auto">
               <div className="grid w-full grid-flow-row grid-cols-2 gap-3 h-fit">
                 {items.map((item) => (
+                  <Link to={`/article/${item.slug}`}>
                   <img
                     key={item.id}
                     src={product}
@@ -39,7 +39,7 @@ const Cart = ({ items, removeFromCart }) => {
                     width={160}
                     height={200}
                     className="h-auto"
-                  />
+                  /></Link>
                 ))}
               </div>
             </div>

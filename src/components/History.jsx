@@ -4,10 +4,10 @@ const History = () => {
   return (
     <div style={{ fontFamily: "ClashDisplay-Medium" }} className="mt-6 text-xl">
       <div className="flex flex-col sm:flex-row text-center">
-        <div className="sm:w-1/2 px-15 py-2 font-bold bg-gray-200">N°</div>
-        <div className="sm:w-1/2 px-8 py-2 font-bold bg-gray-200">Items</div>
-        <div className="sm:w-1/2 px-5 py-2 font-bold bg-gray-200">Date</div>
-        <div className="sm:w-1/2 px-2 py-2 font-bold bg-gray-200"> Total</div>
+        <div className="sm:w-1/2 px-15 py-2 font-bold bg-[#222421] text-[#9F948B]">N°</div>
+        <div className="sm:w-1/2 px-8 py-2 font-bold bg-[#222421] text-[#9F948B]">Items</div>
+        <div className="sm:w-1/2 px-5 py-2 font-bold bg-[#222421] text-[#9F948B]">Date</div>
+        <div className="sm:w-1/2 px-2 py-2 font-bold bg-[#222421] text-[#9F948B]"> Total</div>
       </div>
       <div className="flex flex-col sm:flex-row">
         <div className="sm:w-1/2 px-10 py-2">#2588528855</div>

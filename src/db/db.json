@@ -1,5 +1,19 @@
 {
-  "cart": [],
+  "cart": [
+    {
+      "id": "eazjolgjoia",
+      "name": "BLACK HOODIE",
+      "price": 50,
+      "color": "black",
+      "slug": "black-hoodie",
+      "availableSize": [
+        {
+          "size": "M",
+          "quantity": 10
+        }
+      ]
+    }
+  ],
   "products": [
     {
       "id": "eazjolgjoia",

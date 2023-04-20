@@ -12,7 +12,7 @@ const ArticleCart = ({ removeFromCart, ...item }) => {
       <p className="col-start-7 col-end-8 justify-self-end">{item.price}$</p>
       <button
         type=""
-        className="justify-self-end text-[1.6vw] active:scale-75 transition-transform"
+        className="justify-self-end lg:text-[1.6vw] md:text-[2vw] text-[3vw] active:scale-75 transition-transform"
         style={{ fontFamily: "ClashDisplay-Bold" }}
         onClick={() => removeFromCart(item.id)}
       >

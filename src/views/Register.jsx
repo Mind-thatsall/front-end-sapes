@@ -63,7 +63,6 @@ const Register = () => {
 
     // We put all the errors inside the state
     setErrors(errorsObj);
-    console.log(typeof errorsObj["password"]);
 
     // We return a boolean checking if there's any errors to make the post request
     return Object.keys(errorsObj).length === 0;
@@ -72,21 +71,22 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (checkInputs()) {
+    if(checkInputs()) {
       await axios
-        .post(import.meta.env.VITE_API_URL + "api/users", {
-          email: email,
-          firstname: firstName,
-          lastname: lastName,
-          password: password,
-          newsletter: newsLetter,
-          roles: ["ROLE_USER"],
-        })
-        .then(() => {
-          navigate("/login");
-        })
-        .catch((error) => console.log(error));
+      .post(import.meta.env.VITE_API_URL + "api/user/new", {
+        email: email,
+        firstname: firstName,
+        lastname: lastName,
+        password: password,
+        newsletter: newsLetter,
+        roles: ["ROLE_USER"],
+      })
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((error) => console.log(error));
     }
+    
   };
 
   return (
@@ -100,7 +100,7 @@ const Register = () => {
         </h1>
 
         {(errors["password"] && typeof errors["password"] !== "string") ?
-          Object.values(errors["password"]).map((error, index) => <p key={index}>{error}</p>) : ""}
+          Object.values(errors["password"]).map((error, index) => <p key={index} className="border border-[#c12522] mb-2 text-[#c12522] bg-[#c1252220] p-2">{error}</p>) : ""}
 
         <form
           style={{ fontFamily: "ClashDisplay-Medium" }}
@@ -109,7 +109,7 @@ const Register = () => {
           method="post"
         >
           <div className="mb-2">
-            <label for="email" className="block text-base">
+            <label htmlFor="email" className="block text-base">
               Email
             </label>
             <input
@@ -201,7 +201,7 @@ const Register = () => {
           </div>
 
           <div className="mt-6">
-            <button className="w-full px-4 py-2 text-lg text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] uppercase">
+            <button type="submit" className="w-full px-4 py-2 text-lg text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] uppercase">
               Create an Account
             </button>
           </div>
