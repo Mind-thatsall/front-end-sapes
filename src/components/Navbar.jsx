@@ -6,7 +6,7 @@ import Menu from "@/components/Menu";
 import { getTime } from "@/utils/functions";
 import { useAuth } from "./AuthProvider";
 
-const Navbar = ({ cartSize }) => {
+const Navbar = ({ cartSize, errorState,loadingState }) => {
   const inputRef = useRef(null);
   const bgModalRef = useRef(null);
   const menuRef = useRef(null);
@@ -70,7 +70,7 @@ const Navbar = ({ cartSize }) => {
           </li>
           <li>
             <Link to="/cart">
-              CART {cartSize > 10 ? cartSize : "0" + cartSize}
+              CART {errorState? "ERROR" : loadingState ? "LOADING" : `${cartSize > 10 ? cartSize : "0" + cartSize}`}
             </Link>
           </li>
         </ul>

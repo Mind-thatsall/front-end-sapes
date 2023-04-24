@@ -9,17 +9,17 @@ const Card = ({ addToCartMutation, ...article }) => {
       style={{ fontFamily: "ClashDisplay-Medium" }}
       className="h-fit w-fit mb-[1vh] hover:saturate-50 transition-all"
     >
-      <Link to={`/article/${article.slug}`}><img src={product} alt="Black Hoodie" width={310} height={450} className="w-full" /></Link>
+      <Link to={`/article/${article.slug}`}><img src={article.picture} alt={article.name} width={310} height={450} className="w-[310px] md:h-[400px] h-[310px]" /></Link>
       <div className="flex justify-between items-center mt-[0.5vh] md:mt-0">
         <Link className="flex flex-col justify-center" to={`/article/${article.slug}`}>
           <p className="text-[3.7vw] md:text-[1.5vw] lg:text-[1.3vw]">
-            {article.name}
+          {article.name}
           </p>
           <p
             className="leading-none text-[3.5vw] md:text-[1.4vw] lg:text-[1.2vw]"
             style={{ fontFamily: "ClashDisplay-SemiBold" }}
           >
-            {article.price}$
+           {article.price} $
           </p>
         </Link>
         <button
