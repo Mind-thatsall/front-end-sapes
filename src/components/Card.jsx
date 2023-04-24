@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import product from "@/assets/images/men.jpg";
 import { Link } from "react-router-dom";
 import PlusSign from "../assets/PlusSign";
 
 const Card = ({ addToCartMutation, ...article }) => {
+  useEffect(()=>{console.log(addToCartMutation)},[])
   return (
     <div
       style={{ fontFamily: "ClashDisplay-Medium" }}
