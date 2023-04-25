@@ -18,3 +18,5 @@ export const getArticles = async () => {
     throw new Error('There is an error :', error.message)
   }
 };
+
+

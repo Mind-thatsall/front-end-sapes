@@ -8,15 +8,12 @@ import { toggleFilters } from "@/utils/animations";
 
 const Shop = (props) => {
   const scrollBoxRef = useRef(null);
-  const filtersRef = useRef(null);
   const location = useLocation();
-  const [filterArticles, setFilterArticles] = useState([]); 
-  const [isOpenFilters, setIsOpenFilters] = useState(false);
   const categorieName =
     location.pathname !== "/shop"
       ? location.pathname.split("/")[3].toUpperCase()
       : "SHOP";
-
+  const idCategory = location.state ? location.state.id : null;
   const {
     data: articles,
     error,
@@ -26,7 +23,6 @@ const Shop = (props) => {
   useEffect(() => {
     maxSize(scrollBoxRef.current);
     window.addEventListener("resize", () => maxSize(scrollBoxRef.current));
-    console.log(location.state.id);
     return () => {
       window.removeEventListener("resize", () => maxSize(scrollBoxRef.current));
     };
