@@ -15,7 +15,18 @@ export const getArticles = async () => {
   } 
   catch (error) {
     console.error(error)
-    throw new Error('There is an error :', error.message)
+    if(err.code === "ERR_NETWORK")throw new Error("An error occured while getting articles")
+  }
+};
+
+export const getArticlesFromCategory = async (gender, slug) => {
+  try {
+    const response = await articlesApi.get(`/api/${gender}/categories/${slug}/products`);
+    return response.data;
+  } 
+  catch (error) {
+    console.error(error)
+    if(err.code === "ERR_NETWORK")throw new Error("An error occured while getting articles")
   }
 };
 
