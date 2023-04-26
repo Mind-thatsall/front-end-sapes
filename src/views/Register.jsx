@@ -84,7 +84,10 @@ const Register = () => {
       .then(() => {
         navigate("/login");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error)
+        setErrors({network: "An error occured when creating your account." })
+      });
     }
     
   };
@@ -101,6 +104,8 @@ const Register = () => {
 
         {(errors["password"] && typeof errors["password"] !== "string") ?
           Object.values(errors["password"]).map((error, index) => <p key={index} className="border border-[#c12522] mb-2 text-[#c12522] bg-[#c1252220] p-2">{error}</p>) : ""}
+        
+        {errors["network"] && <p className="border border-[#c12522] mb-2 text-[#c12522] bg-[#c1252220] p-2">{errors["network"]}</p>}
 
         <form
           style={{ fontFamily: "ClashDisplay-Medium" }}

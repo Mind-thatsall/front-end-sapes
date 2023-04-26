@@ -10,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const {setToken,token} = useAuth();
+  const [error,setError] = useState();
 
   const handleSubmit = async (e) => {
     
@@ -21,11 +22,13 @@ const Login = () => {
       })
       .then((response) => {
         setToken(response.data.token);
-        console.log(response.data.token);
         Cookies.set("token",response.data.token);
         navigate("/");
       })
-      .catch((error) => console.log(error))
+      .catch((error) =>{
+        console.log(error);
+        if(error.response.status === 401) setError("Your email address and password are incorrect.");
+      })
   }
 
 
@@ -38,7 +41,7 @@ const Login = () => {
             className="text-2xl text-[#222421] font-bold text-center md:text-3xl lg:text-4xl">
             Login
         </h1>
-
+        {error && <p className="border border-[#c12522] mb-2 text-[#c12522] bg-[#c1252220] p-2">{error}</p>}
         <form
           style={{ fontFamily: "ClashDisplay-Medium" }}
           className="mt-6 text-xl"
@@ -60,7 +63,7 @@ const Login = () => {
 
           <div className="mb-2">
             <label
-              for="password"
+              htmlFor="password"
               className="block text-[#222421]">
               Password
             </label>
