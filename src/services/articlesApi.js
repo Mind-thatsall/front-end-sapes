@@ -30,4 +30,15 @@ export const getArticlesFromCategory = async (gender, slug) => {
   }
 };
 
+export const getArticle = async (id) => {
+  try {
+    const response = await articlesApi.get(`/api/products/${id}`);
+    return response.data;
+  } 
+  catch (error) {
+    console.error(error)
+    if(err.code === "ERR_NETWORK")throw new Error("An error occured while getting the article")
+  }
+};
+
 

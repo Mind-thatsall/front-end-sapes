@@ -1,5 +1,17 @@
 {
-  "cart": [],
+  "cart": [
+    {
+      "id": 2,
+      "name": "I don't smoke t-shirt - White",
+      "description": "Make a statement with this white tee featuring 'I Don't smoke' in bold blue letters. Perfect for those who want to stand out and send a message.",
+      "picture": "https://images.pexels.com/photos/14711712/pexels-photo-14711712.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "gender": "Femme",
+      "color": "Bleu Clair",
+      "rate": 4,
+      "price": "22.00",
+      "size": "M"
+    }
+  ],
   "products": [
     {
       "id": "eazjolgjoia",

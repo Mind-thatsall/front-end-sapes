@@ -10,10 +10,10 @@ const Card = ({ addToCartMutation, ...article }) => {
       style={{ fontFamily: "ClashDisplay-Medium" }}
       className="h-fit w-fit mb-[1vh] hover:saturate-50 transition-all"
     >
-      <Link to={`/article/${article.slug}`}><img src={article.picture} alt={article.name} width={310} height={450} className="w-[310px] md:h-[400px] h-[310px]" /></Link>
+      <Link to={`/article/${article.slug}-${article.id}`}><img src={article.picture} alt={article.name} width={310} height={450} className="w-[400px] md:h-[500px] h-[310px] object-cover" /></Link>
       <div className="flex justify-between items-center mt-[0.5vh] md:mt-0">
-        <Link className="flex flex-col justify-center" to={`/article/${article.slug}`}>
-          <p className="text-[3.7vw] md:text-[1.5vw] lg:text-[1.3vw]">
+        <Link className="flex flex-col justify-center" to={`/article/${article.slug}-${article.id}`}>
+          <p className="text-[3.2vw] md:text-[1.5vw] lg:text-[1.1vw] lg:mt-1">
           {article.name}
           </p>
           <p
@@ -23,13 +23,6 @@ const Card = ({ addToCartMutation, ...article }) => {
            {article.price} $
           </p>
         </Link>
-        <button
-          className="text-[12vw] pr-[0.5vw] md:pr-0 md:text-[7vw] lg:text-[6vw] leading-[4vw] hover:cursor-pointer active:scale-75 transition-transform"
-          style={{ fontFamily: "ClashDisplay-Light" }}
-          onClick={() => addToCartMutation(article)}
-        >
-          <PlusSign />
-        </button>
       </div>
     </div>
   );

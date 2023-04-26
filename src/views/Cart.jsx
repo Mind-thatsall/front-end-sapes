@@ -1,25 +1,18 @@
 import product from "@/assets/images/men.jpg";
 import ArticleCart from "@/components/ArticleCart";
 import { Link } from "react-router-dom";
-import { useAuth } from "../components/AuthProvider";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 const Cart = ({ items, removeFromCart, errorState, loadingState }) => {
-  const navigate = useNavigate();
-  const { token } = useAuth();
-  useEffect(() => {
-    if (!token) navigate(-1);
-  }, []);
 
   function calculateTotal(items) {
+    console.log(items);
     let result = 0;
     for (const item in items) {
-      result += items[item].price;
+      result += Number(items[item].price);
     }
     return result;
   }
-  console.log(errorState);
+
   return (
     <div className="h-screen px-[4vw] md:px-[6vw] lg:px-[4vw] flex justify-center items-center text-[#222421]">
       <div
@@ -34,11 +27,11 @@ const Cart = ({ items, removeFromCart, errorState, loadingState }) => {
                   <Link to={`/article/${item.slug}`}>
                     <img
                       key={item.id}
-                      src={product}
+                      src={item.picture}
                       alt=""
                       width={160}
                       height={200}
-                      className="h-auto"
+                      className="object-cover h-full"
                     />
                   </Link>
                 ))}

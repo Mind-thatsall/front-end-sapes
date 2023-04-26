@@ -14,6 +14,7 @@ const Shop = (props) => {
       ? location.pathname.split("/")[3].toUpperCase()
       : "SHOP";
   const idCategory = location.state ? location.state.id : null;
+  
   const {
     data: articles,
     error,
