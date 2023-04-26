@@ -10,6 +10,7 @@ const Shop = (props) => {
   const scrollBoxRef = useRef(null);
   const filtersRef = useRef(null);
   const location = useLocation();
+  const [filterArticles, setFilterArticles] = useState([]); 
   const [isOpenFilters, setIsOpenFilters] = useState(false);
   const categorieName =
     location.pathname !== "/shop"
@@ -25,7 +26,7 @@ const Shop = (props) => {
   useEffect(() => {
     maxSize(scrollBoxRef.current);
     window.addEventListener("resize", () => maxSize(scrollBoxRef.current));
-
+    
     return () => {
       window.removeEventListener("resize", () => maxSize(scrollBoxRef.current));
     };
@@ -48,15 +49,15 @@ const Shop = (props) => {
         className='hide-scroll grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[3vw] md:gap-[1.5vw] overflow-auto py-[3vh] w-[96%] mx-auto'
       >
         {isLoading && "Loading..."}
-        {error && error}
+        {error && <div>There is an error</div>}
         {articles &&
           articles.map((article) => (
             <Card
               key={article.id}
               {...article}
-              addToCartMutation={props.addToCartMutation}
             />
           ))}
+
       </div>
       
     </div>

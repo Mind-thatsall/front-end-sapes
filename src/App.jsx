@@ -29,6 +29,7 @@ function App() {
     data: cartItems,
     mutate,
     isLoading,
+    error,
   } = useSWR(cartApiEndPoint, getCartItems);
 
   const addToCartMutation = async (newItem) => {
@@ -58,7 +59,7 @@ function App() {
   return (
     <div className="App bg-[#9F948B]">
       <Noise />
-      <Navbar cartSize={cartItems && cartItems.length} />
+      <Navbar cartSize={cartItems && cartItems.length} errorState={error} loadingState={isLoading} />
       <SideBars rotate="" side="left-0" />
       <SideBars rotate="rotate-180" side="right-0" />
       <Routes>
