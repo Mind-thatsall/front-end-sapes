@@ -3,9 +3,11 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { closeMenu } from "@/utils/animations";
+import { useAuth } from "./AuthProvider";
 
 const Menu = ({ menuRef, setMenu }) => {
   const location = useLocation();
+  const { token } = useAuth();
 
   useEffect(() => {
     setMenu(false);
@@ -35,7 +37,7 @@ const Menu = ({ menuRef, setMenu }) => {
         CGU
       </Link>
 
-      <Link to="/login" className="text-[#9F948B] text-[9vw] leading-[5vw] absolute bottom-[70px]">CONNECT</Link>
+      { token ? <Link to="/profile" className="text-[#9F948B] text-[9vw] leading-[5vw] absolute bottom-[70px]">PROFILE</Link> : <Link to="/login" className="text-[#9F948B] text-[9vw] leading-[5vw] absolute bottom-[70px]">CONNECT</Link>}
     </div>
   );
 };

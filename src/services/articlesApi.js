@@ -11,17 +11,29 @@ export const articlesApiEndPoint = "/api/products";
 export const getArticles = async () => {
   try {
     const response = await articlesApi.get(articlesApiEndPoint);
+    console.log(response.data)
     return response.data;
   } 
   catch (error) {
     console.error(error)
-    if(err.code === "ERR_NETWORK")throw new Error("An error occured while getting articles")
+    if(err.code === "ERR_NETWORK") throw new Error("An error occured while getting articles")
   }
 };
 
-export const getArticlesFromCategory = async (gender, slug) => {
+export const getArticlesFromCategory = async (gender, id) => {
   try {
-    const response = await articlesApi.get(`/api/${gender}/categories/${slug}/products`);
+    const response = await articlesApi.get(`/api/${gender}/categories/${id}/products`);
+    return response.data;
+  } 
+  catch (error) {
+    console.error(error)
+    if(error.code === "ERR_NETWORK")throw new Error("An error occured while getting articles")
+  }
+};
+
+export const getCategories = async () => {
+  try {
+    const response = await articlesApi.get(`/api/categories`);
     return response.data;
   } 
   catch (error) {

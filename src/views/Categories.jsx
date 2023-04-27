@@ -3,9 +3,12 @@ import categorie from "@/assets/images/men.jpg";
 import { useRef } from "react";
 import { useEffect } from "react";
 import CategorieCard from "../components/CategorieCard";
+import useSWR from "swr";
+import { getArticlesFromCategory, getCategories } from "../services/articlesApi";
 
 const Categories = ({ gender }) => {
   const scrollBoxRef = useRef(null);
+  const { data: categories, isLoading, error } = useSWR('/api/categories', getCategories);
 
   function maxSize() {
     scrollBoxRef.current.style.height =
@@ -46,36 +49,15 @@ const Categories = ({ gender }) => {
         ref={scrollBoxRef}
         className="hide-scroll grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[3vw] md:gap-[1.5vw] overflow-auto py-[3vh] w-[96%] mx-auto"
       >
-        <CategorieCard
-          picture={categorie}
-          categorieName={"PANTS"}
-          slug={`/${gender}/categories/pants`}
+        {categories && categories.map((category) => (
+          <CategorieCard
+          key={category.id}
+          picture={category.picture}
+          categorieName={category.name}
+          gender={gender}
+          slug={`/${gender}/categories/${category.slug}`}
         />
-        <CategorieCard
-          picture={categorie}
-          categorieName={"HOODIES"}
-          slug={`/${gender}/categories/hoodies`}
-        />
-        <CategorieCard
-          picture={categorie}
-          categorieName={"SHOES"}
-          slug={`/${gender}/categories/shoes`}
-        />
-        <CategorieCard
-          picture={categorie}
-          categorieName={"SOCKS"}
-          slug={`/${gender}/categories/socks`}
-        />
-        <CategorieCard
-          picture={categorie}
-          categorieName={"JOGGERS"}
-          slug={`/${gender}/categories/joggers`}
-        />
-        <CategorieCard
-          picture={categorie}
-          categorieName={"HATS"}
-          slug={`/${gender}/categories/hats`}
-        />
+        ))}
       </div>
     </div>
   );

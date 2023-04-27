@@ -12,7 +12,6 @@ const Article = ({ addToCartMutation }) => {
   const idProduct = arrProductURL[arrProductURL.length - 1];
   const [article, setArticle] = useState(null);
   const [size, setSize] = useState(null);
-  const [error, setError] = useState(null);
   const articleToBuy = { ...article, "size": size};
 
   useEffect(() => {
@@ -75,7 +74,7 @@ const Article = ({ addToCartMutation }) => {
             style={{ fontFamily: "ClashDisplay-SemiBold" }}
             className='text-[5vw] ml-[3vw] md:ml-[1vw] lg:ml-0 md:mt-[0vw] lg:mt-0 md:text-[3.5vw] md:leading-[2.5vw] lg:text-[4.6vw] lg:leading-[5vw] md:mb-[2vh] lg:mb-0 lg:self-start lg:row-start-4 lg:row-end-5 lg:col-start-7 lg:col-end-10 pl-[2vw] mix-blend-difference text-[#796B66]'
           >
-            50.00$
+            {article && article.price}$
           </p>
 
           <div
@@ -83,11 +82,11 @@ const Article = ({ addToCartMutation }) => {
             className='text-[5vw] md:ml-[3vw] lg:ml-0 md:text-[2.2vw] lg:text-[1.2vw] absolute bottom-[2vh] w-full px-[4vw] md:px-0 md:w-[40vw] lg:static flex flex-col lg:block lg:row-start-6 lg:row-end-7 lg:col-start-7 lg:col-end-10 lg:pl-[2vw] lg:pb-[2vw] text-[#222421]'
           >
             <div id="sizesInputs" className='mb-[1vh]'>
-              <span onClick={() => setSize("XL")} style={{ fontFamily: size === "XL" ? "ClashDisplay-SemiBold":"ClashDisplay-Medium"}} className="cursor-pointer select-none">XL</span> /{" "}
-              <span onClick={() => setSize("L")} style={{ fontFamily: size === "L" ? "ClashDisplay-SemiBold":"ClashDisplay-Medium"}} className="cursor-pointer select-none">L</span> /{" "}
-              <span onClick={() => setSize("M")} style={{ fontFamily: size === "M" ? "ClashDisplay-SemiBold":"ClashDisplay-Medium"}} className="cursor-pointer select-none">M</span> /{" "}
-              <span onClick={() => setSize("S")} style={{ fontFamily: size === "S" ? "ClashDisplay-SemiBold":"ClashDisplay-Medium"}} className="cursor-pointer select-none">S</span> /{" "}
-              <span onClick={() => setSize("XS")} style={{ fontFamily: size === "XS" ? "ClashDisplay-SemiBold":"ClashDisplay-Medium"}} className="cursor-pointer select-none">XS</span>
+              <span onClick={() => setSize("XL")} style={{ fontFamily: size === "XL" ? "ClashDisplay-Bold":"ClashDisplay-Medium"}} className="cursor-pointer select-none">XL</span> /{" "}
+              <span onClick={() => setSize("L")} style={{ fontFamily: size === "L" ? "ClashDisplay-Bold":"ClashDisplay-Medium"}} className="cursor-pointer select-none">L</span> /{" "}
+              <span onClick={() => setSize("M")} style={{ fontFamily: size === "M" ? "ClashDisplay-Bold":"ClashDisplay-Medium"}} className="cursor-pointer select-none">M</span> /{" "}
+              <span onClick={() => setSize("S")} style={{ fontFamily: size === "S" ? "ClashDisplay-Bold":"ClashDisplay-Medium"}} className="cursor-pointer select-none">S</span> /{" "}
+              <span onClick={() => setSize("XS")} style={{ fontFamily: size === "XS" ? "ClashDisplay-Bold":"ClashDisplay-Medium"}} className="cursor-pointer select-none">XS</span>
             </div>
             <button
               className='px-[4vw] py-[1vw] bg-[#9F948B] border-[0.3vw] border-[#222421] hover:text-[#9F948B] hover:bg-[#222421] active:bg-[#181a18] transition-colors'

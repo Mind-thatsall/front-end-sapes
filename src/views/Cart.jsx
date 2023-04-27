@@ -24,7 +24,7 @@ const Cart = ({ items, removeFromCart, errorState, loadingState }) => {
             <div className="hide-scroll hidden lg:block w-[620px] h-full lg:overflow-auto">
               <div className="grid w-full grid-flow-row grid-cols-2 gap-3 h-fit">
                 {items.map((item) => (
-                  <Link to={`/article/${item.slug}`}>
+                  <Link to={`/article/${item.slug}-${item.id}`}>
                     <img
                       key={item.id}
                       src={item.picture}
