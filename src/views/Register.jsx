@@ -73,7 +73,7 @@ const Register = () => {
 
     if(checkInputs()) {
       await axios
-      .post(import.meta.env.VITE_API_URL + "/api/user/new", {
+      .post(import.meta.env.VITE_API_URL + "api/user/new", {
         email: email,
         firstname: firstName,
         lastname: lastName,
