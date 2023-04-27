@@ -4,7 +4,7 @@ const articlesApi = axios.create({
   baseURL : import.meta.env.VITE_API_URL ,
 });
 
-export const articlesApiEndPoint = "/api/products";
+export const articlesApiEndPoint = "api/products";
 
 // Functions used to interact with the articles on our backend, here we're only fetching because the backend take care of the rest
 
@@ -22,7 +22,7 @@ export const getArticles = async () => {
 
 export const getArticlesFromCategory = async (gender, id) => {
   try {
-    const response = await articlesApi.get(`/api/${gender}/categories/${id}/products`);
+    const response = await articlesApi.get(`api/${gender}/categories/${id}/products`);
     return response.data;
   } 
   catch (error) {
@@ -33,7 +33,7 @@ export const getArticlesFromCategory = async (gender, id) => {
 
 export const getCategories = async () => {
   try {
-    const response = await articlesApi.get(`/api/categories`);
+    const response = await articlesApi.get(`api/categories`);
     return response.data;
   } 
   catch (error) {
@@ -44,7 +44,7 @@ export const getCategories = async () => {
 
 export const getArticle = async (id) => {
   try {
-    const response = await articlesApi.get(`/api/products/${id}`);
+    const response = await articlesApi.get(`api/products/${id}`);
     return response.data;
   } 
   catch (error) {
