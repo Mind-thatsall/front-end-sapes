@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { checkInputs } from "../utils/functions";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -13,65 +14,12 @@ const Register = () => {
   const [errors, setErrors] = useState({});
   const confirmPasswordRef = useRef(null);
 
-  function checkInputs() {
-    const errorsObj = {};
-
-    // First we check if inputs are empty
-    if (email === "") errorsObj["email"] = "Please enter an email";
-
-    if (firstName === "")
-      errorsObj["firstname"] = "Please enter your first name";
-
-    if (lastName === "") errorsObj["lastname"] = "Please enter your last name";
-
-    if (password === "") {
-      errorsObj["password"] = "Please enter a password.";
-    } else {
-      // If password is not empty we check if it's a valid password
-
-      // We check if there's at least 1 lower case
-      if (!password.match(/[a-z]/gm)) {
-        // if the key "password" doesn't exist yet we create it
-        if (!errorsObj["password"]) errorsObj["password"] = {};
-
-        // If there's an error we create a new key-value pair inside password
-        errorsObj["password"]["lowercase"] = "Must include at least 1 lower-case letter.";
-      }
-
-      // We check if there's at least 1 upper case
-      if (!password.match(/[A-Z]/gm)) {
-        if (!errorsObj["password"]) errorsObj["password"] = {};
-        errorsObj["password"]["uppercase"] = "Must include at least 1 upper-case letter.";
-      }
-
-      // We check if there's at least 1 number
-      if (!password.match(/[0-9]/gm)) {
-        if (!errorsObj["password"]) errorsObj["password"] = {};
-        errorsObj["password"]["number"] = "Must include at least 1 number.";
-      }
-
-      // We check if there's at least 1 special character (!#%)
-      if (!password.match(/[!#%]/gm)) {
-        if (!errorsObj["password"]) errorsObj["password"] = {};
-        errorsObj["password"]["specialChar"] = "Must include at least 1 special character (only the following special characters are allowed: !#%).";
-      }
-    }
-
-    // We check if both passwords are the same
-    if (password !== confirmPasswordRef.current.value)
-      errorsObj["passwords"] = "The passwords doesn't match";
-
-    // We put all the errors inside the state
-    setErrors(errorsObj);
-
-    // We return a boolean checking if there's any errors to make the post request
-    return Object.keys(errorsObj).length === 0;
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if(checkInputs()) {
+    setErrors(() => checkInputs(password, confirmPasswordRef, email, firstName, lastName, setErrors))
+
+    if(Object.keys(errors).length > 0) {
       await axios
       .post(import.meta.env.VITE_API_URL + "api/user/new", {
         email: email,
@@ -102,9 +50,11 @@ const Register = () => {
           Register
         </h1>
 
+        <div className="mt-2">
         {(errors["password"] && typeof errors["password"] !== "string") ?
           Object.values(errors["password"]).map((error, index) => <p key={index} className="border border-[#c12522] mb-2 text-[#c12522] bg-[#c1252220] p-2">{error}</p>) : ""}
-        
+        </div>
+
         {errors["network"] && <p className="border border-[#c12522] mb-2 text-[#c12522] bg-[#c1252220] p-2">{errors["network"]}</p>}
 
         <form
@@ -200,7 +150,7 @@ const Register = () => {
 
           <div className="mt-5 text-xs form-control">
             <label className="cursor-pointer label">
-              <input type="checkbox" />
+              <input type="checkbox" onChange={() => setNewsLetter(!newsLetter)}/>
               <span className="label-text"> Sign Up for Newsletter</span>
             </label>
           </div>
