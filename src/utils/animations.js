@@ -151,3 +151,26 @@ export function toggleFilters(filters, filtersOpened) {
 
   }
 }
+
+export function animError() {
+  let tl = gsap.timeline();
+
+  tl.fromTo("#sizesInputs", {
+    color: "#222421"
+  }, {
+    color: "#c12522",
+    duration: 0.35,
+    ease: "power1.inOut"
+  })
+
+  tl.fromTo("#sizesInputs", {
+    color: "#c12522"
+  }, {
+    color: "#222421",
+    duration: 0.35,
+    delay: 0.5,
+    ease: "power1.inOut"
+  })
+
+  tl.play()
+}

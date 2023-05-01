@@ -30,9 +30,9 @@ function App() {
     mutate,
     isLoading,
     error,
-  } = useSWR(cartApiEndPoint, getCartItems);
+  } = useSWR(['api/secure/user/cart'], getCartItems);
 
-  const addToCartMutation = async (newItem) => {
+  const addToCartMutation = async (newItem, token) => {
     if(token) {
       try {
         await addCartItem(newItem);
@@ -46,9 +46,9 @@ function App() {
     
   };
 
-  const removeCartMutation = async (id) => {
+  const removeCartMutation = async (id, size) => {
     try {
-      await deleteCartItem(id);
+      await deleteCartItem(id, size);
       mutate();
     } catch (e) {
       throw new Error("Error removing from cart", e.message);
@@ -59,7 +59,7 @@ function App() {
   return (
     <div className="App bg-[#9F948B]">
       <Noise />
-      <Navbar cartSize={cartItems && cartItems.length} errorState={error} loadingState={isLoading} />
+      <Navbar cartSize={cartItems && cartItems.quantity} errorState={error} loadingState={isLoading} />
       <SideBars rotate="" side="left-0" />
       <SideBars rotate="rotate-180" side="right-0" />
       <Routes>

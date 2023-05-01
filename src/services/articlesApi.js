@@ -11,7 +11,6 @@ export const articlesApiEndPoint = "api/products";
 export const getArticles = async () => {
   try {
     const response = await articlesApi.get(articlesApiEndPoint);
-    console.log(response.data)
     return response.data;
   } 
   catch (error) {

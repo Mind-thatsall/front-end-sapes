@@ -1,10 +1,8 @@
-import React from "react";
-import useSWR from "swr";
+import React, { useEffect, useState } from "react";
 import { getArticle } from "../services/articlesApi";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { useState } from "react";
-import gsap from "gsap";
+import { animError } from "../utils/animations";
+import { useAuth } from "../components/AuthProvider";
 
 const Article = ({ addToCartMutation }) => {
   const location = useLocation();
@@ -12,7 +10,7 @@ const Article = ({ addToCartMutation }) => {
   const idProduct = arrProductURL[arrProductURL.length - 1];
   const [article, setArticle] = useState(null);
   const [size, setSize] = useState(null);
-  const articleToBuy = { ...article, "size": size};
+  const { token } = useAuth();
 
   useEffect(() => {
     async function getData() {
@@ -21,29 +19,6 @@ const Article = ({ addToCartMutation }) => {
     }
     getData();
   }, []);
-
-  function animError() {
-    let tl = gsap.timeline();
-
-    tl.fromTo("#sizesInputs", {
-      color: "#222421"
-    }, {
-      color: "#c12522",
-      duration: 0.35,
-      ease: "power1.inOut"
-    })
-
-    tl.fromTo("#sizesInputs", {
-      color: "#c12522"
-    }, {
-      color: "#222421",
-      duration: 0.35,
-      delay: 0.5,
-      ease: "power1.inOut"
-    })
-
-    tl.play()
-  }
 
   return (
     <>
@@ -91,7 +66,7 @@ const Article = ({ addToCartMutation }) => {
             <button
               className='px-[4vw] py-[1vw] bg-[#9F948B] border-[0.3vw] border-[#222421] hover:text-[#9F948B] hover:bg-[#222421] active:bg-[#181a18] transition-colors'
               type=''
-              onClick={() => { if(!size) {animError()} else {addToCartMutation(articleToBuy)}}}
+              onClick={() => { if(!size) {animError()} else {addToCartMutation({"product": article.id, "size": size}, token)}}}
             >
               ADD TO CART
             </button>

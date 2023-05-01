@@ -6,7 +6,7 @@ export const Auth = createContext();
 
 const AuthProvider = ({children}) => {
 
-  const [token, setToken] = useState(Cookies.get("token"));
+  const [token, setToken] = useState(Cookies.get("refresh_token"));
 
 
   return (

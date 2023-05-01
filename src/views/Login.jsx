@@ -19,10 +19,13 @@ const Login = () => {
       await axios.post(import.meta.env.VITE_API_URL + "api/login_check", {
         username: email,
         password: password,
+      }, {
+        withCredentials: true
       })
       .then((response) => {
-        setToken(response.data.token);
-        Cookies.set("token",response.data.token);
+        console.log(response)
+        Cookies.set('refresh_token', response.data.refresh_token)
+        setToken(response.data.refresh_token)
         navigate("/");
       })
       .catch((error) =>{
@@ -69,6 +72,7 @@ const Login = () => {
             </label>
             <input
               type="password"
+              autoComplete="true"
               onChange={(e) => setPassword(e.target.value)}
               className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] shadow-lg md:shadow-none border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]">
             </input>

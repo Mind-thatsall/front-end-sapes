@@ -18,8 +18,9 @@ const Register = () => {
     e.preventDefault();
 
     setErrors(() => checkInputs(password, confirmPasswordRef, email, firstName, lastName, setErrors))
+    console.log(Object.keys)
 
-    if(Object.keys(errors).length > 0) {
+    if(!(Object.keys(errors).length > 0)) {
       await axios
       .post(import.meta.env.VITE_API_URL + "api/user/new", {
         email: email,
@@ -129,6 +130,7 @@ const Register = () => {
               </label>
               <input
                 type="password"
+                autoComplete="false"
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ borderColor: errors["password"] && "#ff3b3b"}}
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
@@ -142,6 +144,7 @@ const Register = () => {
               <input
                 ref={confirmPasswordRef}
                 type="password"
+                autoComplete="false"
                 style={{ borderColor: errors["password"] && "#ff3b3b"}}
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
               />

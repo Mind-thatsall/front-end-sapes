@@ -70,7 +70,7 @@ const Navbar = ({ cartSize, errorState, loadingState }) => {
           </li>
           <li>
             <Link to="/cart">
-              {errorState ? "ERROR" : loadingState ? "LOADING" : `CART ${cartSize > 10 ? cartSize : "0" + cartSize}`}
+              {errorState ? "CART 00" : loadingState ? "LOADING" : `CART ${cartSize > 10 ? cartSize : "0" + cartSize}`}
             </Link>
           </li>
         </ul>

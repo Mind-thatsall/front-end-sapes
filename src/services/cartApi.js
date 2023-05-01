@@ -1,41 +1,72 @@
 import axios from "axios";
+import { id } from "date-fns/locale";
+import { getRefreshToken } from "./token";
 
-const cartApi = axios.create({
-  baseURL: "http://localhost:3001",
-});
-
-export const cartApiEndPoint = "/cart";
+export const cartApiEndPoint = "user/cart";
 
 // Functions used to interact with the cart on our backend. We can either fetch the items or add them to the cart.
 
-export const getCartItems = async () => {
+export const getCartItems = async (params) => {
   try {
-  const response = await cartApi.get(cartApiEndPoint);
-  return response.data;
-  }catch(err) {
+    await getRefreshToken();
+    
+    const response = await axios.get(import.meta.env.VITE_API_URL + params[0], {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (err) {
     console.error(err);
-    if(err.code === "ERR_NETWORK") throw new Error("An error occured while fetching your cart")
-
+    if (err.code === "ERR_NETWORK")
+      throw new Error("An error occured while fetching your cart");
+    if (err.response.status === 401)
+      throw new Error(
+        "Not authorized to add to the cart. Verify you're connected."
+      );
   }
 };
 
 export const addCartItem = async (item) => {
   try {
-  const response = await cartApi.post(cartApiEndPoint, item);
-  return response.data;
-}catch(err) {
-  console.error(err);
-  if(err.code === "ERR_NETWORK" || err.code === "ERR_BAD_REQUEST") throw new Error("An error occured while trying to add an item to your cart")
-
-}
+    await getRefreshToken();
+    const response = await axios.post(
+      import.meta.env.VITE_API_URL + "api/secure/cart/add",
+      item,
+      {
+        withCredentials: true,
+      }
+    );
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    if (err.code === "ERR_NETWORK" || err.code === "ERR_BAD_REQUEST")
+      throw new Error(
+        "An error occured while trying to add an item to your cart"
+      );
+  }
 };
 
-export const deleteCartItem = async (id) => {
+export const deleteCartItem = async (id, size) => {
   try {
-  const response = await cartApi.delete(cartApiEndPoint + "/" + id);
-  return response.data;
-  }catch(err) {
+    const data = {
+      product: id,
+      size: size,
+    };
+
+    await getRefreshToken();
+
+    const response = await axios.post(
+      import.meta.env.VITE_API_URL + "api/secure/cart/delete",
+      data,
+      {
+        withCredentials: true,
+      }
+    );
+    return response.data;
+  } catch (err) {
     console.error(err);
-    if(err.code === "ERR_NETWORK" || err.code === "ERR_BAD_REQUEST") throw new Error("An error occured while trying to remove an item to your cart")
+    if (err.code === "ERR_NETWORK" || err.code === "ERR_BAD_REQUEST")
+      throw new Error(
+        "An error occured while trying to remove an item to your cart"
+      );
   }
 };
