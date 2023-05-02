@@ -1,13 +1,15 @@
 import React from "react";
 import Cookies from "js-cookie"
 import { useAuth } from "./AuthProvider";
+import { logout } from "../services/token";
 
 const Account = () => {
   const { setToken } = useAuth()
 
   function handleLogout() {
+    logout("math@mate.com");
     setToken(null);
-    Cookies.remove("token")
+    Cookies.remove("refresh_token");
   }
   
   return (
