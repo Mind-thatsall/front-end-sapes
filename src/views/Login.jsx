@@ -23,7 +23,6 @@ const Login = () => {
         withCredentials: true
       })
       .then((response) => {
-        console.log(response)
         Cookies.set('refresh_token', response.data.refresh_token)
         setToken(response.data.refresh_token)
         navigate("/");

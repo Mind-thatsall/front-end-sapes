@@ -17,7 +17,8 @@ const Navbar = ({ cartSize, errorState, loadingState }) => {
   const [dateTime, setDateTime] = useState(getTime());
 
   // Use the useEffect hook to update the dateTime state variable every second
-  useEffect(() => {
+  useEffect(() => { 
+    console.log(cartSize);
 
     const interval = setInterval(() => {
       setDateTime(getTime());
@@ -70,7 +71,7 @@ const Navbar = ({ cartSize, errorState, loadingState }) => {
           </li>
           <li>
             <Link to="/cart">
-              {errorState ? "CART 00" : loadingState ? "LOADING" : `CART ${cartSize > 10 ? cartSize : "0" + cartSize}`}
+              {token ? errorState ? "CART 00" : loadingState ? "LOADING" : `CART ${cartSize === '' ? "00" : cartSize < 10 ? "0" + cartSize : cartSize}` : "CART 00"}
             </Link>
           </li>
         </ul>

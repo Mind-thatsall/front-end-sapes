@@ -26,7 +26,7 @@ const Article = ({ addToCartMutation }) => {
         <div className='md:px-[4vw] h-screen relative flex flex-col gap-4 lg:grid md:grid-cols-8 lg:grid-cols-12 grid-rows-6'>
           <div className='relative w-full h-20vh lg:h-auto lg:col-start-1 lg:row-start-1 md:col-end-9 lg:col-end-7 md:row-end-5 lg:row-end-7'>
             <img
-              className='w-full h-[60vh] md:h-[70vh] lg:h-full md:static'
+              className='w-full h-[60vh] md:h-[70vh] lg:h-full md:static object-cover'
               src={article && article.picture}
               alt='black hoodie'
               width={310}
@@ -49,7 +49,7 @@ const Article = ({ addToCartMutation }) => {
             style={{ fontFamily: "ClashDisplay-SemiBold" }}
             className='text-[5vw] ml-[3vw] md:ml-[1vw] lg:ml-0 md:mt-[0vw] lg:mt-0 md:text-[3.5vw] md:leading-[2.5vw] lg:text-[4.6vw] lg:leading-[5vw] md:mb-[2vh] lg:mb-0 lg:self-start lg:row-start-4 lg:row-end-5 lg:col-start-7 lg:col-end-10 pl-[2vw] mix-blend-difference text-[#796B66]'
           >
-            {article && article.price}$
+            {article && (article.price / 100).toFixed(2)}$
           </p>
 
           <div

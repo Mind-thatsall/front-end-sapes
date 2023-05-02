@@ -10,7 +10,7 @@ const ArticleCart = ({ removeFromCart, ...item }) => {
 
       </span>
       <p className="col-start-5 col-end-6 md:col-start-6 md:col-end-7 justify-self-center">{item.quantity}</p>
-      <p className="col-start-7 col-end-8 justify-self-end">{item.price}$</p>
+      <p className="col-start-7 col-end-8 justify-self-end">{(item.price / 100).toFixed(2)}$</p>
       <button
         type=""
         className="justify-self-end lg:text-[1.2vw] md:text-[2vw] text-[3vw] active:scale-75 transition-transform"

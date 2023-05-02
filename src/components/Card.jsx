@@ -20,7 +20,7 @@ const Card = ({ addToCartMutation, ...article }) => {
             className="leading-none text-[3.5vw] md:text-[1.4vw] lg:text-[1.2vw]"
             style={{ fontFamily: "ClashDisplay-SemiBold" }}
           >
-           {article.price} $
+           {(article.price / 100).toFixed(2)} $
           </p>
         </Link>
       </div>
