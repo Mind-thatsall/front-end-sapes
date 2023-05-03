@@ -58,6 +58,7 @@ const Login = () => {
             </label>
             <input
               type="email"
+              autoComplete="true"
               onChange={(e) => setEmail(e.target.value)}
               className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 shadow-lg md:shadow-none border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]">
             </input>

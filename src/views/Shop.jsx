@@ -18,7 +18,10 @@ const Shop = (props) => {
   const [articles, setArticles] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
-  const searchTerm = location.pathname.split("/")[1] === "search" ? location.pathname.split("/")[2] : null;
+  const searchTerm =
+    location.pathname.split("/")[1] === "search"
+      ? location.pathname.split("/")[2]
+      : null;
 
   useEffect(() => {
     maxSize(scrollBoxRef.current);
@@ -56,12 +59,13 @@ const Shop = (props) => {
           setIsLoading(true);
 
           const search = {
-            "name": searchTerm.replace("%20", " ")
-          }
+            name: searchTerm.replace("%20", " "),
+          };
           const response = await axios.post(
-            import.meta.env.VITE_API_URL + "api/search", search
+            import.meta.env.VITE_API_URL + "api/search",
+            search
           );
-          setArticles(response.data)
+          setArticles(response.data);
         } catch (err) {
           console.log(err);
           setError(err.message);
@@ -90,7 +94,17 @@ const Shop = (props) => {
         ref={scrollBoxRef}
         className='hide-scroll grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[3vw] md:gap-[1.5vw] overflow-auto py-[3vh] w-[96%] mx-auto'
       >
-        {isLoading && "LOADING..."}
+        {!isLoading
+          ? articles
+            ? articles.map((article) => (
+                <Card
+                  key={article.id}
+                  {...article}
+                  addToCartMutation={props.addToCartMutation}
+                />
+              ))
+            : "NOTHING FOUND"
+          : "LOADING..."}
         {error && (
           <p
             className='uppercase absolute left-[50%] top-[50%] md:top-[55%] lg:top-[60%] translate-x-[-50%] text-[3.5vw] lg:text-[1.5vw] text-center text-[#222421]'
@@ -99,14 +113,6 @@ const Shop = (props) => {
             {error}
           </p>
         )}
-        {articles ?
-          articles.map((article) => (
-            <Card
-              key={article.id}
-              {...article}
-              addToCartMutation={props.addToCartMutation}
-            />
-          )) : "NOTHING FOUND"}
       </div>
     </div>
   );

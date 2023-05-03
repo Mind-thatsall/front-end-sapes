@@ -56,14 +56,16 @@ const Account = ({ setUserData, ...userData }) => {
     <form
       style={{ fontFamily: "ClashDisplay-Medium" }}
       className='mt-6 text-xl uppercase'
+      autoComplete="new-password"
     >
+      <input type="hidden" value="prayer" />
       <div className='mb-2'>
         <label htmlFor='email' className='block'>
           Email
         </label>
         <input
           type='email'
-          autoComplete='true'
+          autoComplete='email'
           placeholder={userData.email && userData.email}
           onInput={(e) =>
             setUpdateData((prev) => ({ ...prev, email: e.target.value }))
@@ -78,7 +80,6 @@ const Account = ({ setUserData, ...userData }) => {
         </label>
         <input
           type='text'
-          autoComplete='true'
           placeholder={userData.address && userData.address}
           onInput={(e) =>
             setUpdateData((prev) => ({ ...prev, address: e.target.value }))
@@ -94,7 +95,6 @@ const Account = ({ setUserData, ...userData }) => {
           </label>
           <input
             type='text'
-            autoComplete='true'
             placeholder={userData.postal_code && userData.postal_code}
             onInput={(e) =>
               setUpdateData((prev) => ({
@@ -112,8 +112,8 @@ const Account = ({ setUserData, ...userData }) => {
           </label>
           <input
             type='text'
-            autoComplete='true'
             placeholder={userData.city && userData.city}
+            autoComplete="off"
             onInput={(e) =>
               setUpdateData((prev) => ({ ...prev, city: e.target.value }))
             }
@@ -135,7 +135,7 @@ const Account = ({ setUserData, ...userData }) => {
           </label>
           <input
             type='password'
-            autoComplete='true'
+            autoComplete='new-password'
             placeholder="ENTER YOUR PASSWORD..."
             onInput={(e) =>
               setUpdateData((prev) => ({ ...prev, password: e.target.value }))
@@ -154,7 +154,7 @@ const Account = ({ setUserData, ...userData }) => {
           </label>
           <input
             type='password'
-            autoComplete='true'
+            autoComplete='new-password'
             placeholder="ENTER YOUR PASSWORD..."
             onInput={(e) =>
               setUpdateData((prev) => ({ ...prev, repassword: e.target.value }))

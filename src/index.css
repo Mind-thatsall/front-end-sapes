@@ -19,7 +19,9 @@
   width: 0px; /* For Chrome, Safari, and Opera */
 }
 
-body {
+html{
+  height: 100vh;
+  background-color: #9F948B;
 }
 
 .gender {

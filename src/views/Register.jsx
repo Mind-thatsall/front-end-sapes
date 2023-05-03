@@ -70,6 +70,8 @@ const Register = () => {
             </label>
             <input
               type="email"
+              autoComplete="email"
+              placeholder="EMAIL HERE..."
               onChange={(e) => setEmail(e.target.value)}
               style={{ borderColor: errors["email"] && "#c12522" }}
               className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
@@ -90,6 +92,8 @@ const Register = () => {
               </label>
               <input
                 type="text"
+                autoComplete="off"
+                placeholder="FIRSTNAME HERE..."
                 onChange={(e) => setFirstName(e.target.value)}
                 style={{ borderColor: errors["firstname"] && "#c12522" }}
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190] "
@@ -109,6 +113,8 @@ const Register = () => {
               </label>
               <input
                 type="text"
+                autoComplete="off"
+                placeholder="LASTNAME HERE..."
                 onChange={(e) => setLastName(e.target.value)}
                 style={{ borderColor: errors["lastname"] && "#c12522" }}
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
@@ -130,7 +136,8 @@ const Register = () => {
               </label>
               <input
                 type="password"
-                autoComplete="false"
+                autoComplete="new-password"
+                placeholder="PASSWORD HERE..."
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ borderColor: errors["password"] && "#c12522"}}
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
@@ -144,7 +151,8 @@ const Register = () => {
               <input
                 ref={confirmPasswordRef}
                 type="password"
-                autoComplete="false"
+                autoComplete="new-password"
+                placeholder="PASSWORD HERE..."
                 style={{ borderColor: errors["password"] && "#c12522"}}
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
               />

@@ -13,15 +13,21 @@ const Profile = () => {
     email: "",
     phone_number: ""
   })
+  const [orders, setOrders] = useState();
 
   useEffect(() => {
-    async function getUser() {
-      const response = await axios.get(import.meta.env.VITE_API_URL + "api/secure/user", {
+    async function getInformations() {
+      const responseUser = await axios.get(import.meta.env.VITE_API_URL + "api/secure/user", {
         withCredentials: true
       })
-      setUserData(response.data);
+      setUserData(responseUser.data);
+      const responseOrders = await axios.get(import.meta.env.VITE_API_URL + "api/secure/user/orders", {
+        withCredentials: true
+      })
+      setOrders(responseOrders.data);
+      
     }
-    getUser();
+    getInformations();
   
   }, [])
   
@@ -68,7 +74,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        {activeTab === "account" ? <Account setUserData={setUserData} {...userData} /> : <History />}
+        {activeTab === "account" ? <Account setUserData={setUserData} {...userData} /> : <History orders={orders} />}
       </div>
     </div>
   );
