@@ -87,6 +87,10 @@ function App() {
           path="/shop"
           element={<Shop addToCartMutation={addToCartMutation} />}
         />
+        <Route
+          path="/search/:search"
+          element={<Shop addToCartMutation={addToCartMutation} />}
+        />
         <Route path="/article/:id" element={<Article addToCartMutation={addToCartMutation} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

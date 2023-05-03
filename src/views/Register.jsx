@@ -71,11 +71,11 @@ const Register = () => {
             <input
               type="email"
               onChange={(e) => setEmail(e.target.value)}
-              style={{ borderColor: errors["email"] && "#ff3b3b" }}
+              style={{ borderColor: errors["email"] && "#c12522" }}
               className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
             ></input>
             <p
-              className={`text-sm text-[#ff3b3b] mt-1 ${
+              className={`text-sm text-[#c12522] mt-1 ${
                 !errors["email"] && "hidden"
               }`}
             >
@@ -91,11 +91,11 @@ const Register = () => {
               <input
                 type="text"
                 onChange={(e) => setFirstName(e.target.value)}
-                style={{ borderColor: errors["firstname"] && "#ff3b3b" }}
+                style={{ borderColor: errors["firstname"] && "#c12522" }}
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190] "
               />
               <p
-                className={`text-sm text-[#ff3b3b] mt-1 ${
+                className={`text-sm text-[#c12522] mt-1 ${
                   !errors["firstname"] && "hidden"
                 }`}
               >
@@ -110,11 +110,11 @@ const Register = () => {
               <input
                 type="text"
                 onChange={(e) => setLastName(e.target.value)}
-                style={{ borderColor: errors["lastname"] && "#ff3b3b" }}
+                style={{ borderColor: errors["lastname"] && "#c12522" }}
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
               />
               <p
-                className={`text-sm text-[#ff3b3b] mt-1 ${
+                className={`text-sm text-[#c12522] mt-1 ${
                   !errors["lastname"] && "hidden"
                 }`}
               >
@@ -132,7 +132,7 @@ const Register = () => {
                 type="password"
                 autoComplete="false"
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ borderColor: errors["password"] && "#ff3b3b"}}
+                style={{ borderColor: errors["password"] && "#c12522"}}
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
               />
             </div>
@@ -145,7 +145,7 @@ const Register = () => {
                 ref={confirmPasswordRef}
                 type="password"
                 autoComplete="false"
-                style={{ borderColor: errors["password"] && "#ff3b3b"}}
+                style={{ borderColor: errors["password"] && "#c12522"}}
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
               />
             </div>

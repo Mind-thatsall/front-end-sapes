@@ -15,6 +15,8 @@ const Cart = ({ items, removeFromCart, errorState, loadingState }) => {
     axios.post(import.meta.env.VITE_API_URL + "api/checkout", data).then((response) => window.location.href = response.data)
   }
 
+
+  console.log(items);
   return (
     <div className='h-screen px-[4vw] md:px-[6vw] lg:px-[4vw] flex justify-center items-center text-[#222421]'>
       <div
@@ -55,7 +57,7 @@ const Cart = ({ items, removeFromCart, errorState, loadingState }) => {
               <span className='w-full h-1 bg-[#222421]'></span>
               <div className='flex items-center justify-between'>
                 <p>
-                  {items.length} ARTICLES FOR {(items.total / 100).toFixed(2)}$
+                  {items.length} ARTICLES FOR {(items.reduce((acc, curr) => acc + curr.product.price, 0) / 100).toFixed(2)}$
                 </p>
                 <button
                   type=''
