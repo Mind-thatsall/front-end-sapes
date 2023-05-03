@@ -55,7 +55,7 @@ const Categories = ({ gender }) => {
           picture={category.picture}
           categorieName={category.name}
           gender={gender}
-          slug={`/${gender}/categories/${category.slug}`}
+          slug={`/${gender}/categories/${category.name}`}
         />
         ))}
       </div>

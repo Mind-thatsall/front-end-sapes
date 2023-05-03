@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Cart = ({ items, removeFromCart, errorState, loadingState }) => {
   function handleCheckout(items) {
     const data = {
-      cart_id: items.id,
-      products: items.products
+      products: items
     };
 
     console.log(data);
@@ -22,17 +21,17 @@ const Cart = ({ items, removeFromCart, errorState, loadingState }) => {
         className='w-[890px] h-[65vh] bg-[#9F948B] border-[4px] border-[#222421] p-[20px] flex gap-4'
         style={{ fontFamily: "ClashDisplay-Medium" }}
       >
-        {items && items.quantity > 0 ? (
+        {items && items.length > 0 ? (
           <>
             <div className='hide-scroll hidden lg:block w-[620px] h-full lg:overflow-auto'>
               <div className='grid w-full grid-flow-row grid-cols-2 gap-3 h-fit'>
-                {items.products.map((item) => (
+                {items.map((item) => (
                   <Link
-                    to={`/article/${item.slug}-${item.id}`}
-                    key={`${item.id}-${item.size}`}
+                    to={`/article/${item.product.slug}-${item.product.id}`}
+                    key={`${item.product.id}-${item.size}`}
                   >
                     <img
-                      src={item.picture}
+                      src={item.product.picture}
                       alt=''
                       width={160}
                       height={200}
@@ -45,9 +44,9 @@ const Cart = ({ items, removeFromCart, errorState, loadingState }) => {
             <span className='w-1 h-full bg-[#222421] hidden lg:block'></span>
             <div className='flex flex-col w-full gap-5'>
               <div className='hide-scroll w-full h-[80%] overflow-auto flex flex-col gap-5'>
-                {items.products.map((item) => (
+                {items.map((item) => (
                   <ArticleCart
-                    key={`${item.id}-${item.size}`}
+                    key={`${item.product.id}-${item.size}`}
                     {...item}
                     removeFromCart={removeFromCart}
                   />
@@ -56,7 +55,7 @@ const Cart = ({ items, removeFromCart, errorState, loadingState }) => {
               <span className='w-full h-1 bg-[#222421]'></span>
               <div className='flex items-center justify-between'>
                 <p>
-                  {items.quantity} ARTICLES FOR {(items.total / 100).toFixed(2)}$
+                  {items.length} ARTICLES FOR {(items.total / 100).toFixed(2)}$
                 </p>
                 <button
                   type=''

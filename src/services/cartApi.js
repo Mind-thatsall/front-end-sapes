@@ -1,5 +1,4 @@
 import axios from "axios";
-import { id } from "date-fns/locale";
 import { getRefreshToken } from "./token";
 
 export const cartApiEndPoint = "user/cart";

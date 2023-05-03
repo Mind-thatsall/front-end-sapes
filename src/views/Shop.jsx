@@ -33,7 +33,7 @@ const Shop = (props) => {
           
           setIsLoading(true)
           const data = await getArticlesFromCategory(gender, categorieName);
-          setArticles(data);
+          setArticles(data.products);
         } else {
           const data = await getArticles();
           setArticles(data);

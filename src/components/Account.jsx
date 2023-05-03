@@ -2,14 +2,26 @@ import React from "react";
 import Cookies from "js-cookie"
 import { useAuth } from "./AuthProvider";
 import { logout } from "../services/token";
+import axios from "axios";
+import { useState } from "react";
 
-const Account = () => {
+const Account = ({setUserData, ...userData}) => {
   const { setToken } = useAuth()
+  const [updateData, setUpdateData] = useState();
 
   function handleLogout() {
     logout("math@mate.com");
     setToken(null);
     Cookies.remove("refresh_token");
+  }
+
+  function handleUpdate(e) {
+    e.preventDefault();
+
+    setUpdateData(prev => ({...prev, password: userData.password}))
+    axios.post(import.meta.env.VITE_API_URL + "api/secure/user/edit", updateData, {
+      withCredentials: true,
+    }).then((response) => console.log(response)).catch((err) => console.error(err))
   }
   
   return (
@@ -27,6 +39,8 @@ const Account = () => {
         </label>
         <input
           type="email"
+          placeholder={userData.email && userData.email}
+          onInput={(e) => setUpdateData(prev => ({...prev, email: e.target.value}))}
           className="block w-full px-4 py-2 mt-2 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]" />
       </div>
       <div className="flex flex-col md:flex-row">
@@ -60,6 +74,8 @@ const Account = () => {
         </label>
         <input
           type="text"
+          placeholder={userData.address && userData.address}
+          onInput={(e) => setUpdateData(prev => ({...prev, address: e.target.value}))}
           className="block w-full px-4 py-2 mt-2 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190] " />
       </div>
 
@@ -72,6 +88,8 @@ const Account = () => {
           </label>
           <input
             type="text"
+            placeholder={userData.postal_code && userData.postal_code}
+            onInput={(e) => setUpdateData(prev => ({...prev, postal_code: e.target.value}))}
             className="block w-full px-4 py-2 mt-2 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190] " />
         </div>
 
@@ -83,6 +101,8 @@ const Account = () => {
           </label>
           <input
             type="text"
+            placeholder={userData.city && userData.city}
+            onInput={(e) => setUpdateData(prev => ({...prev, city: e.target.value}))}
             className="block w-full px-4 py-2 mt-2 border-2 border-[#222421] text-black-700 focus:border-black-900 bg-[#9a9087] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]" />
         </div>
       </div>
@@ -94,7 +114,7 @@ const Account = () => {
         <div className="flex flex-col sm:flex-row">
           <div className="mb-2 sm:mr-2 sm:w-1/2">
             <div className="mt-6">
-              <button className="w-full px-4 py-2 tracking-wide text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] uppercase text-base">Update</button>
+              <button onClick={handleUpdate} className="w-full px-4 py-2 tracking-wide text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] uppercase text-base">Update</button>
             </div>
           </div>
 

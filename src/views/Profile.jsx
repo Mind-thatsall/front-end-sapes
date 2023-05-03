@@ -1,9 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Account from "../components/Account";
 import History from "../components/History";
+import axios from "axios";
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState("account");
+  const [userData, setUserData] = useState({
+    address: "",
+    postal_code: "",
+    password: "",
+    city: "",
+    email: "",
+    phone_number: ""
+  })
+
+  useEffect(() => {
+    async function getUser() {
+      const response = await axios.get(import.meta.env.VITE_API_URL + "api/secure/user", {
+        withCredentials: true
+      })
+      setUserData(response.data);
+    }
+    getUser();
+  
+  }, [])
+  
 
   return (
     <div className="grid max-h-screen min-h-screen grid-cols-12 overflow-y-auto grid-rows-12">
@@ -47,8 +68,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-
-        {activeTab === "account" ? <Account /> : <History />}
+        {activeTab === "account" ? <Account setUserData={setUserData} {...userData} /> : <History />}
       </div>
     </div>
   );

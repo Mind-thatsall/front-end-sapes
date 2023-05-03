@@ -47,6 +47,7 @@ function App() {
   };
 
   const removeCartMutation = async (id, size) => {
+    console.log(id, size);
     try {
       await deleteCartItem(id, size);
       mutate();
@@ -59,7 +60,7 @@ function App() {
   return (
     <div className="App bg-[#9F948B]">
       <Noise />
-      <Navbar cartSize={cartItems && cartItems.quantity} errorState={error} loadingState={isLoading} />
+      <Navbar cartSize={cartItems && cartItems.length} errorState={error} loadingState={isLoading} />
       <SideBars rotate="" side="left-0" />
       <SideBars rotate="rotate-180" side="right-0" />
       <Routes>

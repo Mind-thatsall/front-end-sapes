@@ -18,7 +18,6 @@ const Navbar = ({ cartSize, errorState, loadingState }) => {
 
   // Use the useEffect hook to update the dateTime state variable every second
   useEffect(() => { 
-    console.log(cartSize);
 
     const interval = setInterval(() => {
       setDateTime(getTime());
