@@ -17,9 +17,10 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // On submit we check thanks to "checkInputs" if all the informations are correct
     setErrors(() => checkInputs(password, confirmPasswordRef, email, firstName, lastName, setErrors))
-    console.log(Object.keys)
 
+    // If we get no errors then we proceed with a POST request to create the account
     if(!(Object.keys(errors).length > 0)) {
       await axios
       .post(import.meta.env.VITE_API_URL + "api/user/new", {

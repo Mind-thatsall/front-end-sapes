@@ -3,8 +3,6 @@ import Card from "@/components/Card";
 import { useLocation } from "react-router-dom";
 import { maxSize } from "@/utils/functions";
 import { getArticles } from "@/services/articlesApi";
-import { getArticlesFromCategory } from "../services/articlesApi";
-import axios from "axios";
 
 const Shop = (props) => {
   const scrollBoxRef = useRef(null);
@@ -23,6 +21,7 @@ const Shop = (props) => {
       ? location.pathname.split("/")[2]
       : null;
 
+  // Get the maxSize available for the articles and give it to the scrollBoxRef in px
   useEffect(() => {
     maxSize(scrollBoxRef.current);
     window.addEventListener("resize", () => maxSize(scrollBoxRef.current));
@@ -31,51 +30,22 @@ const Shop = (props) => {
     };
   }, []);
 
+  // Data fetching depending of where the user comes from. Either from a search, a filter by category or all the articles at once.
   useEffect(() => {
-    if (!searchTerm) {
-      async function fetchData() {
-        try {
-          setIsLoading(true);
-          if (gender && categorieName) {
-            setIsLoading(true);
-            const data = await getArticlesFromCategory(gender, categorieName);
-            setArticles(data.products);
-          } else {
-            const data = await getArticles();
-            setArticles(data);
-          }
-        } catch (err) {
-          console.log(err);
-          setError(err.message);
-        } finally {
-          setIsLoading(false);
-        }
+    async function fetchDataByCategoryOrAll() {
+      setIsLoading(true);
+      try {
+        const data = await getArticles(gender, categorieName, searchTerm);
+        setArticles(data);
+      } catch (err) {
+        console.log(err);
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
       }
-
-      fetchData();
-    } else {
-      async function fetchData() {
-        try {
-          setIsLoading(true);
-
-          const search = {
-            name: searchTerm.replace("%20", " "),
-          };
-          const response = await axios.post(
-            import.meta.env.VITE_API_URL + "api/search",
-            search
-          );
-          setArticles(response.data);
-        } catch (err) {
-          console.log(err);
-          setError(err.message);
-        } finally {
-          setIsLoading(false);
-        }
-      }
-
-      fetchData();
     }
+
+    fetchDataByCategoryOrAll();
   }, [location.pathname]);
 
   return (

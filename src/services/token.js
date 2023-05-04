@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import axios from "axios";
 
-export const getRefreshToken = async () => {
+export const getNewAccessToken = async () => {
   try {
     const response = await axios.get(
       import.meta.env.VITE_API_URL + "api/token/refresh",

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getRefreshToken } from "./token";
+import { getNewAccessToken } from "./token";
 
 export const cartApiEndPoint = "user/cart";
 
@@ -7,7 +7,7 @@ export const cartApiEndPoint = "user/cart";
 
 export const getCartItems = async (params) => {
   try {
-    await getRefreshToken();
+    await getNewAccessToken();
 
     const response = await axios.get(import.meta.env.VITE_API_URL + params[0], {
       withCredentials: true,
@@ -27,7 +27,7 @@ export const getCartItems = async (params) => {
 
 export const addCartItem = async (item) => {
   try {
-    await getRefreshToken();
+    await getNewAccessToken();
     const response = await axios.post(
       import.meta.env.VITE_API_URL + "api/secure/cart/add",
       item,
@@ -51,7 +51,7 @@ export const deleteCartItem = async (id, size) => {
       size: size,
     };
 
-    await getRefreshToken();
+    await getNewAccessToken();
 
     const response = await axios.post(
       import.meta.env.VITE_API_URL + "api/secure/cart/delete",

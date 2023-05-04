@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Account from "../components/Account";
 import History from "../components/History";
 import axios from "axios";
+import { getNewAccessToken } from "../services/token";
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState("account");
@@ -17,6 +18,7 @@ const Profile = () => {
 
   useEffect(() => {
     async function getInformations() {
+      await getNewAccessToken();
       const responseUser = await axios.get(import.meta.env.VITE_API_URL + "api/secure/user", {
         withCredentials: true
       })

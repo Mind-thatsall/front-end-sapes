@@ -8,7 +8,6 @@ import Register from "@/views/Register";
 import Profile from "@/views/Profile";
 import Article from "@/views/Article";
 import Cgu from "@/views/Cgu";
-import Checkout from "@/views/Checkout";
 import Contact from "@/views/Contact";
 import Noise from "@/components/Noise";
 import Navbar from "@/components/Navbar";
@@ -25,6 +24,8 @@ import { useAuth } from "./components/AuthProvider";
 function App() {
   const { token } = useAuth();
   const navigate = useNavigate();
+
+  // We use SWR for caching and state management when mutating data through the app (add to cart, delete from cart, etc...)
   const {
     data: cartItems,
     mutate,
@@ -32,6 +33,7 @@ function App() {
     error,
   } = useSWR(['api/secure/user/cart'], getCartItems);
 
+  // Here we check if the user have a refresh token, then we add to the db and mutate to update the ui in real time
   const addToCartMutation = async (newItem, token) => {
     if(token) {
       try {
@@ -46,6 +48,7 @@ function App() {
     
   };
 
+  // Same here to delete from a cart
   const removeCartMutation = async (id, size) => {
     console.log(id, size);
     try {
@@ -56,11 +59,15 @@ function App() {
     }
   };
 
+  function getQuantity(cartItems) {
+    const quantity = cartItems.reduce((acc, num) => acc + num.quantity, 0);
+    return quantity;
+  }
 
   return (
     <div className="App bg-[#9F948B]">
       <Noise />
-      <Navbar cartSize={cartItems && cartItems.length} errorState={error} loadingState={isLoading} />
+      <Navbar cartSize={cartItems && getQuantity(cartItems)} errorState={error} loadingState={isLoading} />
       <SideBars rotate="" side="left-0" />
       <SideBars rotate="rotate-180" side="right-0" />
       <Routes>
@@ -99,7 +106,6 @@ function App() {
           path="/cart"
           element={token ? <Cart errorState={error} loadingState={isLoading}  items={cartItems} removeFromCart={removeCartMutation} /> : <Navigate to="/login"/>}
         />
-        <Route path="/checkout" element={<Checkout />} />
         <Route path="/cgu" element={<Cgu />} />
         <Route path="/profile" element={token ? <Profile /> : <Navigate to="/login" />} />
       </Routes>

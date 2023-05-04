@@ -7,7 +7,7 @@ import { useRef } from "react";
 const SearchBar = ({ inputRef, bgModalRef }) => {
   const navigate = useNavigate();
 
-  async function handleSubmitSearch(e) {
+  function handleSubmitSearch(e) {
     e.preventDefault();
     const searchRef = document.querySelector("#searchRef");
 
