@@ -33,7 +33,7 @@ const History = ({ orders }) => {
             <div className='sm:w-1/2 px-8 py-2'>
               {order.orderDetails.length}
             </div>
-            <div className='sm:w-1/2 px-8 py-2'>04/05/2023</div>
+            <div className='sm:w-1/2 px-8 py-2'>05/05/2023</div>
             <div className='sm:w-1/2 px-8 py-2'>
               {getTotal(order.orderDetails)}$
             </div>

@@ -31,7 +31,7 @@ function App() {
     mutate,
     isLoading,
     error,
-  } = useSWR(['api/secure/user/cart'], getCartItems);
+  } = useSWR(['api/secure/user/cart', token], getCartItems);
 
   // Here we check if the user have a refresh token, then we add to the db and mutate to update the ui in real time
   const addToCartMutation = async (newItem, token) => {
