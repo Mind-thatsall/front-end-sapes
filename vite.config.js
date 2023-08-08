@@ -6,7 +6,11 @@ import path from "path";
 export default defineConfig({
   plugins: [react()],
   test: {
-    include: ['./src/tests/**']
+    globals: true,
+    environment: 'jsdom',
+    include: ['./src/tests/**'],
+    setupFiles: "./src/setupTests.js",
+    css: true,
   },
   resolve: {
     alias: [

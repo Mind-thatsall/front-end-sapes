@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CategorieCard = ({ picture, categorieName, slug }) => {
+const CategoryCard = ({ picture, categorieName, slug }) => {
   return (
     <Link className="relative" to={slug}>
       <img
@@ -21,4 +21,4 @@ const CategorieCard = ({ picture, categorieName, slug }) => {
   );
 };
 
-export default CategorieCard;
+export default CategoryCard;

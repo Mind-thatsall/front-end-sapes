@@ -13,12 +13,7 @@ import Noise from "@/components/Noise";
 import Navbar from "@/components/Navbar";
 import SideBars from "@/components/Sidebars";
 import useSWR from "swr";
-import {
-  cartApiEndPoint,
-  getCartItems,
-  addCartItem,
-  deleteCartItem,
-} from "@/services/cartApi";
+import { getCartItems, addCartItem, deleteCartItem } from "./services/cartApi";
 import { useAuth } from "./components/AuthProvider";
 
 function App() {
@@ -31,11 +26,11 @@ function App() {
     mutate,
     isLoading,
     error,
-  } = useSWR(['api/secure/user/cart', token], getCartItems);
+  } = useSWR(["api/secure/user/cart", token], getCartItems);
 
   // Here we check if the user have a refresh token, then we add to the db and mutate to update the ui in real time
   const addToCartMutation = async (newItem, token) => {
-    if(token) {
+    if (token) {
       try {
         await addCartItem(newItem);
         mutate();
@@ -43,9 +38,8 @@ function App() {
         throw new Error("Error adding to cart", e.message);
       }
     } else {
-      navigate("/login")
+      navigate("/login");
     }
-    
   };
 
   // Same here to delete from a cart
@@ -67,7 +61,11 @@ function App() {
   return (
     <div className="App bg-[#9F948B]">
       <Noise />
-      <Navbar cartSize={cartItems && getQuantity(cartItems)} errorState={error} loadingState={isLoading} />
+      <Navbar
+        cartSize={cartItems && getQuantity(cartItems)}
+        errorState={error}
+        loadingState={isLoading}
+      />
       <SideBars rotate="" side="left-0" />
       <SideBars rotate="rotate-180" side="right-0" />
       <Routes>
@@ -98,16 +96,33 @@ function App() {
           path="/search/:search"
           element={<Shop addToCartMutation={addToCartMutation} />}
         />
-        <Route path="/article/:id" element={<Article addToCartMutation={addToCartMutation} />} />
+        <Route
+          path="/article/:id"
+          element={<Article addToCartMutation={addToCartMutation} />}
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/cart"
-          element={token ? <Cart errorState={error} loadingState={isLoading}  items={cartItems} removeFromCart={removeCartMutation} /> : <Navigate to="/login"/>}
+          element={
+            token ? (
+              <Cart
+                errorState={error}
+                loadingState={isLoading}
+                items={cartItems}
+                removeFromCart={removeCartMutation}
+              />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
         <Route path="/cgu" element={<Cgu />} />
-        <Route path="/profile" element={token ? <Profile /> : <Navigate to="/login" />} />
+        <Route
+          path="/profile"
+          element={token ? <Profile /> : <Navigate to="/login" />}
+        />
       </Routes>
     </div>
   );

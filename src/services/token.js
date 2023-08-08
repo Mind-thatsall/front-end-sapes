@@ -14,6 +14,7 @@ export const getNewAccessToken = async () => {
     );
     return response.data;
   } catch (err) {
+    console.log(err);
   }
 };
 
@@ -24,11 +25,10 @@ export const logout = async (username) => {
       {
         params: {
           refresh_token: Cookies.get("refresh_token"),
-          username: username
+          username: username,
         },
       }
     );
     return response.data;
-  } catch (err) {
-  }
+  } catch (err) { }
 };

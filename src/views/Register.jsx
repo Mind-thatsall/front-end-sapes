@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { checkInputs } from "../utils/functions";
+import { useEffect } from "react";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -12,38 +13,57 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [newsLetter, setNewsLetter] = useState(false);
   const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
   const confirmPasswordRef = useRef(null);
 
-  const handleSubmit = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    // On submit we check thanks to "checkInputs" if all the informations are correct
-    setErrors(() => checkInputs(password, confirmPasswordRef, email, firstName, lastName, setErrors))
+    const errors = checkInputs(
+      password,
+      confirmPasswordRef,
+      email,
+      firstName,
+      lastName
+    );
 
-    // If we get no errors then we proceed with a POST request to create the account
-    if(!(Object.keys(errors).length > 0)) {
+    setErrors(errors);
+    setSubmitting(true);
+  }
+
+  async function createAccount() {
+    if (!(Object.keys(errors).length > 0) && submitting) {
+      console.log("here");
       await axios
-      .post(import.meta.env.VITE_API_URL + "api/user/new", {
-        email: email,
-        firstname: firstName,
-        lastname: lastName,
-        password: password,
-        newsletter: newsLetter,
-        roles: ["ROLE_USER"],
-      })
-      .then(() => {
-        navigate("/login");
-      })
-      .catch((error) => {
-        console.log(error)
-        setErrors({network: "An error occured when creating your account." })
-      });
+        .post(import.meta.env.VITE_API_URL + "api/user/new", {
+          email: email,
+          firstname: firstName,
+          lastname: lastName,
+          password: password,
+          newsletter: newsLetter,
+          roles: ["ROLE_USER"],
+        })
+        .then(() => {
+          navigate("/login");
+        })
+        .catch((error) => {
+          console.log("Error:", error);
+          setErrors({
+            network: "This email is already used by another account.",
+          });
+        })
+        .finally(() => {
+          setSubmitting(false);
+        });
     }
-    
-  };
+  }
+
+  useEffect(() => {
+    createAccount();
+  }, [errors]);
 
   return (
-    <div className="relative flex flex-col justify-center min-h-screen overflow-hidden uppercase ">
+    <div className="flex overflow-hidden relative flex-col justify-center min-h-screen uppercase">
       <div className="p-6 m-auto bg-[#9F948B] border-2 border-[#222421] shadow-xl lg:max-w-xl">
         <h1
           style={{ fontFamily: "ClashDisplay-SemiBold" }}
@@ -53,11 +73,23 @@ const Register = () => {
         </h1>
 
         <div className="mt-2">
-        {(errors["password"] && typeof errors["password"] !== "string") ?
-          Object.values(errors["password"]).map((error, index) => <p key={index} className="border border-[#c12522] mb-2 text-[#c12522] bg-[#c1252220] p-2">{error}</p>) : ""}
+          {errors["password"] && typeof errors["password"] !== "string"
+            ? Object.values(errors["password"]).map((error, index) => (
+              <p
+                key={index}
+                className="border border-[#c12522] mb-2 text-[#c12522] bg-[#c1252220] p-2"
+              >
+                {error}
+              </p>
+            ))
+            : ""}
         </div>
 
-        {errors["network"] && <p className="border border-[#c12522] mb-2 text-[#c12522] bg-[#c1252220] p-2">{errors["network"]}</p>}
+        {errors["network"] && (
+          <p className="border border-[#c12522] mb-2 text-[#c12522] bg-[#c1252220] p-2">
+            {errors["network"]}
+          </p>
+        )}
 
         <form
           style={{ fontFamily: "ClashDisplay-Medium" }}
@@ -78,9 +110,8 @@ const Register = () => {
               className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
             ></input>
             <p
-              className={`text-sm text-[#c12522] mt-1 ${
-                !errors["email"] && "hidden"
-              }`}
+              className={`text-sm text-[#c12522] mt-1 ${!errors["email"] && "hidden"
+                }`}
             >
               {errors["email"]}
             </p>
@@ -100,9 +131,8 @@ const Register = () => {
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190] "
               />
               <p
-                className={`text-sm text-[#c12522] mt-1 ${
-                  !errors["firstname"] && "hidden"
-                }`}
+                className={`text-sm text-[#c12522] mt-1 ${!errors["firstname"] && "hidden"
+                  }`}
               >
                 {errors["firstname"]}
               </p>
@@ -121,9 +151,8 @@ const Register = () => {
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
               />
               <p
-                className={`text-sm text-[#c12522] mt-1 ${
-                  !errors["lastname"] && "hidden"
-                }`}
+                className={`text-sm text-[#c12522] mt-1 ${!errors["lastname"] && "hidden"
+                  }`}
               >
                 {errors["lastname"]}
               </p>
@@ -140,7 +169,7 @@ const Register = () => {
                 autoComplete="new-password"
                 placeholder="PASSWORD HERE..."
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ borderColor: errors["password"] && "#c12522"}}
+                style={{ borderColor: errors["password"] && "#c12522" }}
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
               />
             </div>
@@ -154,7 +183,7 @@ const Register = () => {
                 type="password"
                 autoComplete="new-password"
                 placeholder="PASSWORD HERE..."
-                style={{ borderColor: errors["password"] && "#c12522"}}
+                style={{ borderColor: errors["password"] && "#c12522" }}
                 className="block w-full px-4 py-2 mt-2 text-[#222421] bg-[#9a9087] border-2 border-[#222421] focus-visible:outline-none focus:bg-[#90867d] transition-colors placeholder:text-[#22242190]"
               />
             </div>
@@ -162,13 +191,19 @@ const Register = () => {
 
           <div className="mt-5 text-xs form-control">
             <label className="cursor-pointer label">
-              <input type="checkbox" onChange={() => setNewsLetter(!newsLetter)}/>
+              <input
+                type="checkbox"
+                onChange={() => setNewsLetter(!newsLetter)}
+              />
               <span className="label-text"> Sign Up for Newsletter</span>
             </label>
           </div>
 
           <div className="mt-6">
-            <button type="submit" className="w-full px-4 py-2 text-lg text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] uppercase">
+            <button
+              type="submit"
+              className="w-full px-4 py-2 text-lg text-[#b0a49a] transition-colors duration-200 transform bg-[#222421] hover:bg-[#30322e] active:bg-[#383a36] uppercase"
+            >
               Create an Account
             </button>
           </div>
