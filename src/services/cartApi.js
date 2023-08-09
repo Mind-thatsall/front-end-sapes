@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useAuth } from "../components/AuthProvider";
 import { getNewAccessToken } from "./token";
 
 export const cartApiEndPoint = "user/cart";
@@ -18,7 +17,6 @@ export const getCartItems = async (params) => {
       );
       return response.data;
     } catch (err) {
-      console.log(err);
       if (err.code === "ERR_NETWORK" || err.code === "ERR_BAD_RESPONSE") {
         throw new Error(
           "An error occured while fetching your cart",
